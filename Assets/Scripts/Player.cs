@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
     {
         Movement();
         StartShooting();
-        //UpdateLockState();
     }
 
     private void Movement()

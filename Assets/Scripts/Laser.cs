@@ -36,10 +36,13 @@ public class Laser : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D otherCollider)
     {
         GameObject target = otherCollider.gameObject;
-        if (target.GetComponent<Target>())
+        if(!target.GetComponent<Player>())
         {
-            Debug.Log("HIT");
-            Destroy(gameObject);
-        }
+            if (target.GetComponent<Target>())
+            {
+                Debug.Log("HIT");
+                Destroy(gameObject);
+            }
+        }        
     }
 }
