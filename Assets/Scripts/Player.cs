@@ -73,6 +73,8 @@ public class Player : MonoBehaviour
     public void SetPlayerLockStateFalse()
     {
         isLocked = false;
+        Player player = FindObjectOfType<Player>();
+        player.GetComponent<Locking>().SetLockStateFalse();
     }
 
     private void OnDestroy()

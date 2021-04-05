@@ -8,14 +8,10 @@ public class Npc : MonoBehaviour
     Vector3 movement;
     Vector3 target;
     Vector3 lastPlayerPos;
-    Vector3 randomPos;
-    
-    GameObject player;
-
-    CircleCollider2D agroCollider;
+    //Vector3 randomPos;
 
     [SerializeField] float speed = 1f;    
-    [SerializeField] float timer = 1;
+    //[SerializeField] float timer = 1;
     [SerializeField] float shootDelay = 1f;
 
     [SerializeField] bool aggro = false;
@@ -26,17 +22,10 @@ public class Npc : MonoBehaviour
 
     Quaternion toTargetRotation;
 
-    float x;
-    float y;
+    //float x;
+    //float y;
 
-    void Update()
-    {
-        //RandomMovement(); 
-        Aggro();
-        TrackPlayer();
-    }
-
-    private void RandomMovement()
+    /*private void RandomMovement()
     {
         if(timer <= 0)
         {
@@ -50,19 +39,17 @@ public class Npc : MonoBehaviour
         }
         timer -= Time.deltaTime;
 
-    }
+    }*/
 
-    private void Aggro()
+    public virtual void Aggro()
     {
         if(aggro != true) { return; }
         {
             target = FindObjectOfType<Player>().transform.position;
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-            movement = target;
-            Rotate();           
+            movement = target;                     
         }
     }
-
 
     IEnumerator ShootLaser()
     {
@@ -70,13 +57,11 @@ public class Npc : MonoBehaviour
         {
             GameObject laserP = Instantiate(laser, gun.transform.position, Quaternion.identity) as GameObject;
             laserP.transform.rotation = toTargetRotation;
-            yield return new WaitForSeconds(shootDelay);
-            
+            yield return new WaitForSeconds(shootDelay);           
         }
     }
 
-
-    private void Rotate()
+    public virtual void Rotate()
     {
         var relativePos = movement - transform.position;
         var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
@@ -84,13 +69,12 @@ public class Npc : MonoBehaviour
         transform.rotation = toTargetRotation;
     }
 
-    private void TrackPlayer()
+    public virtual void TrackPlayer()
     {
         if (trackPlayer != true) { return; }
         
         if(transform.position != lastPlayerPos)
         {
-            Rotate();
             transform.position = Vector3.MoveTowards(transform.position, lastPlayerPos, speed * Time.deltaTime);
             Debug.Log(lastPlayerPos);
         }
@@ -99,9 +83,6 @@ public class Npc : MonoBehaviour
             trackPlayer = false;
         }
     }
-
-
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -112,7 +93,7 @@ public class Npc : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private  void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.GetComponent<Player>())
         {
@@ -123,7 +104,7 @@ public class Npc : MonoBehaviour
         }        
     }
 
-    private void OnDestroy()
+    public virtual void OnDestroy()
     {
         Player player = FindObjectOfType<Player>();
         player.GetComponent<Player>().SetPlayerLockStateFalse();

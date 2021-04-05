@@ -55,10 +55,14 @@ public class Locking : MonoBehaviour
         isLocked = true;
     }
 
+    public void SetLockStateFalse()
+    {
+        isLocked = false;
+    }
+
     public Vector3 ReturnCurrentTargetPos()
     {
         return targetPos;
-        Debug.Log(targetPos);
     }
 
     public bool ReturnLockState()

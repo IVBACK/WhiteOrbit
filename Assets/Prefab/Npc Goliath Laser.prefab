@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4480100057092871976}
   - component: {fileID: -4777470064738929218}
   m_Layer: 9
-  m_Name: Enemy Laser
+  m_Name: Npc Goliath Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,4 +144,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4591c29c397c4bc4ba1a4bfbd280b065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 10
+  projectileSpeed: 30
+  laserLifeTime: 0.6

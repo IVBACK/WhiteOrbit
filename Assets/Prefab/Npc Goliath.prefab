@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5618569798105714737}
   - component: {fileID: 5618569798105714750}
   - component: {fileID: 6338477021050833928}
-  - component: {fileID: 6847505649290858896}
   - component: {fileID: 8310588406708238001}
   - component: {fileID: 1033599635232730573}
+  - component: {fileID: 1369052893}
   m_Layer: 2
   m_Name: Npc Goliath
   m_TagString: Untagged
@@ -138,24 +138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTargeted: 0
---- !u!114 &6847505649290858896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5618569798105714749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee843eeb997cd342a7594f1474d2115, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  timer: 3
-  shootDelay: 1
-  aggro: 0
-  laser: {fileID: 931692346010555205, guid: 88db7056d0e6b2b4286c349ac6d09383, type: 3}
-  gun: {fileID: 5618569798544655461}
 --- !u!58 &8310588406708238001
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -185,6 +167,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!114 &1369052893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5618569798105714749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efdfafd16131984e8124d17ff48ddcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  timer: 1
+  shootDelay: 1
+  aggro: 0
+  laser: {fileID: 8956582450753928806, guid: b818b3e94de386047aece5062d6787a7, type: 3}
+  gun: {fileID: 5618569798544655461}
 --- !u!1 &5618569798544655461
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class Laser : MonoBehaviour
         GuideToTarget();
     }
 
-    private void GuideToTarget()
+    public virtual void GuideToTarget()
     {
         Locking[] locking = FindObjectsOfType<Locking>();
         foreach(Locking locks in locking)
@@ -33,7 +33,7 @@ public class Laser : MonoBehaviour
         transform.rotation = toTargetRotation;
     }
 
-    private void OnCollisionEnter2D(Collision2D otherCollider)
+    public virtual void OnCollisionEnter2D(Collision2D otherCollider)
     {
         GameObject target = otherCollider.gameObject;
         if(!target.GetComponent<Player>())
