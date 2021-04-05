@@ -2,29 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+public class EnemyLaser : MonoBehaviour
 {
     [SerializeField] float projectileSpeed;
+    [SerializeField] float laserLifeTime = 0.6f;
 
     Vector3 targetPos;
 
     void FixedUpdate()
     {
-        GuideToTarget();
+        GuideToTarget();         
+        DestroyLaserAfterSec();
     }
 
     private void GuideToTarget()
     {
-        Locking[] locking = FindObjectsOfType<Locking>();
-        foreach(Locking locks in locking)
-        {
-            if(locks.GetComponent<Player>())
-            {
-                targetPos = locks.GetComponent<Locking>().ReturnCurrentTargetPos();
-            }           
-        }
-
-
+        targetPos = FindObjectOfType<Player>().transform.position;
+            
         transform.position = Vector3.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
 
         var relativePos = targetPos - transform.position;
@@ -32,19 +26,23 @@ public class Laser : MonoBehaviour
         var toTargetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = toTargetRotation;
     }
+    
+    private void DestroyLaserAfterSec()
+    {
+        Destroy(this.gameObject, laserLifeTime);
+    }
 
     private void OnCollisionEnter2D(Collision2D otherCollider)
     {
         GameObject target = otherCollider.gameObject;
-        if(!target.GetComponent<Player>())
+        if (!target.GetComponent<Npc>())
         {
             if (target.GetComponent<Target>())
             {
                 Debug.Log("HIT");
                 target.GetComponent<Health>().TakeDamage();
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
         }
-        
     }
 }

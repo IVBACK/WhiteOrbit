@@ -15,7 +15,7 @@ public class Locking : MonoBehaviour
         BreakLock();
     }
 
-    private void BreakLock()
+    public void BreakLock()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -24,7 +24,7 @@ public class Locking : MonoBehaviour
             foreach (Target target in targets)
             {
                 target.BreakLock();
-                FindObjectOfType<Player>().UpdateLockState();
+                FindObjectOfType<Player>().SetPlayerLockStateFalse();
             }
         }
     }
@@ -58,6 +58,7 @@ public class Locking : MonoBehaviour
     public Vector3 ReturnCurrentTargetPos()
     {
         return targetPos;
+        Debug.Log(targetPos);
     }
 
     public bool ReturnLockState()

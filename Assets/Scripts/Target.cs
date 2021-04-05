@@ -16,7 +16,7 @@ public class Target : MonoBehaviour
     public void OnMouseDown()
     {
         isTargeted = true;
-        FindObjectOfType<Player>().SetLockStateTrue();
+        FindObjectOfType<Player>().SetPlayerLockStateTrue();
     }
 
     public void BreakLock()

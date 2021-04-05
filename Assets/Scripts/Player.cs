@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButton(0))
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Rotate();           
@@ -57,28 +57,30 @@ public class Player : MonoBehaviour
     {
         while(isLocked)
         {
-            yield return new WaitForSeconds(shootDelay);
             GameObject laserP = Instantiate(laser, gun.transform.position, Quaternion.identity) as GameObject;
             laserP.transform.rotation = rotation;
+            yield return new WaitForSeconds(shootDelay);           
         }       
     }
 
-    public void SetLockStateTrue()
+    public void SetPlayerLockStateTrue()
     {
         isLocked = true;
-        
-        Player[] players = FindObjectsOfType<Player>();
-        foreach (Player player in players)
-        {
-            if (player.GetComponent<Player>())
-            {
-                player.GetComponent<Locking>().SetLockStateTrue();
-            }
-        }
+        Player player = FindObjectOfType<Player>();
+        player.GetComponent<Locking>().SetLockStateTrue();
     }
 
-    public void UpdateLockState()
+    public void SetPlayerLockStateFalse()
     {
         isLocked = false;
-    }  
+    }
+
+    private void OnDestroy()
+    {
+        EnemyLaser[] enemyLasers = FindObjectsOfType<EnemyLaser>();
+        foreach (EnemyLaser lasers in enemyLasers)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

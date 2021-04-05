@@ -13,7 +13,10 @@ public class CameraTrack : MonoBehaviour
     
     void Update()
     {
-        Vector2 playerPos = player.transform.position;
-        transform.position = playerPos;
+        if(player != null)
+        {
+            Vector2 playerPos = player.transform.position;
+            transform.position = playerPos;
+        }       
     }
 }
