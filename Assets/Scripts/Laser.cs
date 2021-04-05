@@ -8,14 +8,22 @@ public class Laser : MonoBehaviour
 
     Vector3 targetPos;
 
-    void Update()
+    void FixedUpdate()
     {
         GuideToTarget();
     }
 
     private void GuideToTarget()
     {
-        targetPos = FindObjectOfType<Player>().ReturnCurrentTargetPos();
+        Locking[] locking = FindObjectsOfType<Locking>();
+        foreach(Locking locks in locking)
+        {
+            if(locks.GetComponent<Player>())
+            {
+                targetPos = locks.GetComponent<Locking>().ReturnCurrentTargetPos();
+            }           
+        }
+
 
         transform.position = Vector3.MoveTowards(transform.position, targetPos, projectileSpeed * Time.deltaTime);
 

@@ -12,18 +12,16 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject gun;  //Placeholder
 
     Vector3 mousePos;
-    Vector3 targetPos;
 
     Quaternion rotation;
 
-    bool isLocked = false;
+    bool isLocked;
  
     void Update()
     {
         Movement();
         StartShooting();
-        LockTarget();
-        BreakLock();
+        //UpdateLockState();
     }
 
     private void Movement()
@@ -68,45 +66,20 @@ public class Player : MonoBehaviour
 
     public void SetLockStateTrue()
     {
-        isLocked = true;       
-    }
-
-    private void BreakLock()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        isLocked = true;
+        
+        Player[] players = FindObjectsOfType<Player>();
+        foreach (Player player in players)
         {
-            isLocked = false;
-            Target[] targets = FindObjectsOfType<Target>();
-            foreach(Target target in targets)
+            if (player.GetComponent<Player>())
             {
-                target.BreakLock();
+                player.GetComponent<Locking>().SetLockStateTrue();
             }
-        }       
-    }
-
-    private void LockTarget()
-    {
-        if(isLocked != true) { return; }
-        {
-            Target[] targetsPos = FindObjectsOfType<Target>();
-            foreach(Target target in targetsPos)
-            {
-                if(target.ReturnTargetedState())
-                {
-                    targetPos = target.GetTargetPos();
-                }
-            }
-            Debug.Log(targetPos);
-
-            var relativePos = targetPos - transform.position;
-            var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
-            var toTargetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation =  toTargetRotation;
         }
     }
 
-    public Vector3 ReturnCurrentTargetPos()
+    public void UpdateLockState()
     {
-        return targetPos;
-    }
+        isLocked = false;
+    }  
 }
