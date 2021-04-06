@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lordakia : Npc
+public class NpcShip : Npc
 {
-
     void Update()
     {
         Aggro();
         TrackPlayer();
         RandomMovement();
+        Rotate();
     }
 
     public override void Aggro()
@@ -19,11 +19,18 @@ public class Lordakia : Npc
 
     public override void TrackPlayer()
     {
-        base.TrackPlayer();  
+        base.TrackPlayer();
+    }
+
+    public override void Rotate()
+    {
+        base.Rotate();
     }
 
     public override void RandomMovement()
     {
         base.RandomMovement();
     }
+
+    
 }

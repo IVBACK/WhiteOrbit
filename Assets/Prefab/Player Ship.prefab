@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 9065404809085691764}
   - component: {fileID: 9065404809085691771}
   m_Layer: 8
-  m_Name: Goliath
+  m_Name: Player Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9065404809085691763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.77, y: 9.42, z: 0}
+  m_LocalPosition: {x: -5.77, y: 9.42, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9065404808468733300}
@@ -219,7 +219,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.76, y: 1.25}
+    oldSize: {x: 1.0857143, y: 1.7857143}
     newSize: {x: 1.7, y: 1.51}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

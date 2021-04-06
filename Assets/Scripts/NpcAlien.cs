@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goliath : Npc
+public class NpcAlien : Npc
 {
+
     void Update()
     {
         Aggro();
         TrackPlayer();
         RandomMovement();
-        Rotate();
     }
 
     public override void Aggro()
@@ -19,18 +19,11 @@ public class Goliath : Npc
 
     public override void TrackPlayer()
     {
-        base.TrackPlayer();
-    }
-
-    public override void Rotate()
-    {
-        base.Rotate();
+        base.TrackPlayer();  
     }
 
     public override void RandomMovement()
     {
         base.RandomMovement();
     }
-
-    
 }

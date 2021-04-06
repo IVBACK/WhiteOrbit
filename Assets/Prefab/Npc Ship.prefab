@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1033599635232730573}
   - component: {fileID: 1369052893}
   m_Layer: 2
-  m_Name: Npc Goliath
+  m_Name: Npc Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5618569798105714749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.36, y: -2.45, z: 1}
+  m_LocalPosition: {x: -4.36, y: -2.45, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5618569798885236835}
