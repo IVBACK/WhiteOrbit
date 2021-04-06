@@ -15,12 +15,12 @@ public class Laser : MonoBehaviour
 
     public virtual void GuideToTarget()
     {
-        Locking[] locking = FindObjectsOfType<Locking>();
-        foreach(Locking locks in locking)
+        TargetSystem[] targetSystems = FindObjectsOfType<TargetSystem>();
+        foreach(TargetSystem targetSystem in targetSystems)
         {
-            if(locks.GetComponent<Player>())
+            if(targetSystem.GetComponent<Player>())
             {
-                targetPos = locks.GetComponent<Locking>().ReturnCurrentTargetPos();
+                targetPos = targetSystem.GetComponent<TargetSystem>().ReturnCurrentTargetPos();
             }           
         }
 
@@ -38,7 +38,7 @@ public class Laser : MonoBehaviour
         GameObject target = otherCollider.gameObject;
         if(!target.GetComponent<Player>())
         {
-            if (target.GetComponent<Target>())
+            if (target.GetComponent<TargetSystem>())
             {
                 Debug.Log("HIT");
                 target.GetComponent<Health>().TakeDamage();

@@ -35,14 +35,13 @@ public class EnemyLaser : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D otherCollider)
     {
         GameObject target = otherCollider.gameObject;
-        if (!target.GetComponent<Npc>())
+        if (target.GetComponent<Player>())
         {
-            if (target.GetComponent<Target>())
-            {
-                Debug.Log("HIT");
-                target.GetComponent<Health>().TakeDamage();
-                Destroy(gameObject);
-            }
+
+             Debug.Log("HIT");
+             target.GetComponent<Health>().TakeDamage();
+             Destroy(gameObject);
+
         }
     }
 }

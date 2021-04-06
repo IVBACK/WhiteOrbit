@@ -85,6 +85,8 @@ public class Npc : MonoBehaviour
         {
             aggro = true;
             patrol = false;
+            //collision.GetComponent<TargetSystem>().SetTargetedStateTrue(); //Causing bug couldnt fix yet
+            GetComponent<TargetSystem>().SetLockStateTrue();
             StartCoroutine(ShootLaser());
         }
     }
@@ -94,6 +96,8 @@ public class Npc : MonoBehaviour
         if(collision.GetComponent<Player>())
         {
             aggro = false;
+            collision.GetComponent<TargetSystem>().SetTargetedStateFalse();
+            GetComponent<TargetSystem>().SetLockStateFalse();
             lastPlayerPos = FindObjectOfType<Player>().transform.position;
             movement = lastPlayerPos;
             trackPlayer = true;

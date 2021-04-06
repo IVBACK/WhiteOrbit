@@ -103,9 +103,8 @@ GameObject:
   - component: {fileID: 9065404809085691768}
   - component: {fileID: 9065404809085691767}
   - component: {fileID: 9065404809085691766}
-  - component: {fileID: 9065404809085691765}
-  - component: {fileID: 9065404809085691764}
   - component: {fileID: 9065404809085691771}
+  - component: {fileID: 150346787}
   m_Layer: 8
   m_Name: Player Ship
   m_TagString: Untagged
@@ -215,7 +214,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02621609, y: -0.03950721}
+  m_Offset: {x: 0.05893135, y: -0.0095181465}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -226,7 +225,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4895393, y: 0.78450525}
+  m_Size: {x: 0.79162025, y: 0.5827627}
   m_EdgeRadius: 0
 --- !u!114 &9065404809085691766
 MonoBehaviour:
@@ -247,31 +246,6 @@ MonoBehaviour:
   - {fileID: 9065404808914560224}
   laser: {fileID: 6987195347320262207, guid: 089c4e602511715438ebbde925e2f410, type: 3}
   gun: {fileID: 9065404808934079063}
---- !u!114 &9065404809085691765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9065404809085691763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b77a31403688024baa8189d4a462860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &9065404809085691764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9065404809085691763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0504d60ed2a36e4eac76654122d5c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isTargeted: 0
 --- !u!114 &9065404809085691771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,3 +259,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3000
+--- !u!114 &150346787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065404809085691763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee1c50680727684dab1261b9742b855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTargeted: 0
+  isLocked: 0

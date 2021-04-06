@@ -128,11 +128,10 @@ GameObject:
   - component: {fileID: 3384734054194506284}
   - component: {fileID: 3384734054194506285}
   - component: {fileID: 3384734054194506286}
-  - component: {fileID: 3384734054194506273}
-  - component: {fileID: 3816551655383250455}
   - component: {fileID: 1176832416722504878}
   - component: {fileID: 7879544126645934034}
   - component: {fileID: 1790159715}
+  - component: {fileID: 827875709}
   m_Layer: 2
   m_Name: Npc Alien
   m_TagString: Untagged
@@ -230,31 +229,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3384734054194506273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3384734054194506274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b77a31403688024baa8189d4a462860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3816551655383250455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3384734054194506274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0504d60ed2a36e4eac76654122d5c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isTargeted: 0
 --- !u!58 &1176832416722504878
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -304,6 +278,20 @@ MonoBehaviour:
   trackPlayer: 0
   laser: {fileID: 931692346010555205, guid: 88db7056d0e6b2b4286c349ac6d09383, type: 3}
   gun: {fileID: 3384734054292405882}
+--- !u!114 &827875709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3384734054194506274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee1c50680727684dab1261b9742b855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTargeted: 0
+  isLocked: 0
 --- !u!1 &3384734054292405882
 GameObject:
   m_ObjectHideFlags: 0

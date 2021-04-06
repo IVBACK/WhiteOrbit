@@ -15,8 +15,15 @@ public class Player : MonoBehaviour
 
     Quaternion rotation;
 
+    TargetSystem playerTargetSystem;
+
     bool isLocked;
- 
+
+    private void Start()
+    {
+        playerTargetSystem = GetComponent<TargetSystem>();
+    }
+
     void Update()
     {
         Movement();
@@ -41,7 +48,7 @@ public class Player : MonoBehaviour
             var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
             rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = rotation;
-        }       
+        }
     }
 
     private void StartShooting()
@@ -66,23 +73,21 @@ public class Player : MonoBehaviour
     public void SetPlayerLockStateTrue()
     {
         isLocked = true;
-        Player player = FindObjectOfType<Player>();
-        player.GetComponent<Locking>().SetLockStateTrue();
+        playerTargetSystem.SetLockStateTrue();
     }
 
     public void SetPlayerLockStateFalse()
     {
         isLocked = false;
-        Player player = FindObjectOfType<Player>();
-        player.GetComponent<Locking>().SetLockStateFalse();
+        playerTargetSystem.SetLockStateFalse();
     }
 
-    private void OnDestroy()
+    /*private void OnDestroy()
     {
         EnemyLaser[] enemyLasers = FindObjectsOfType<EnemyLaser>();
         foreach (EnemyLaser lasers in enemyLasers)
         {
             Destroy(gameObject);
         }
-    }
+    }*/
 }
