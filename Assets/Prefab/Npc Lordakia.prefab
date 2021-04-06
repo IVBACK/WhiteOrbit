@@ -44,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.03346157, y: 0.024335623}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.49503517, y: 0.51328707}
   m_EdgeRadius: 0
 --- !u!1 &3384734053621608592
 GameObject:
@@ -130,9 +130,10 @@ GameObject:
   - component: {fileID: 3384734054194506286}
   - component: {fileID: 3384734054194506273}
   - component: {fileID: 3816551655383250455}
-  - component: {fileID: 4325404927440219023}
   - component: {fileID: 1176832416722504878}
   - component: {fileID: 7879544126645934034}
+  - component: {fileID: 1790159715}
+  - component: {fileID: 4516001471407983703}
   m_Layer: 2
   m_Name: Npc Lordakia
   m_TagString: Untagged
@@ -217,7 +218,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3384734054194506274}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -255,24 +256,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTargeted: 0
---- !u!114 &4325404927440219023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3384734054194506274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee843eeb997cd342a7594f1474d2115, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  timer: 3
-  shootDelay: 1
-  aggro: 0
-  laser: {fileID: 931692346010555205, guid: 88db7056d0e6b2b4286c349ac6d09383, type: 3}
-  gun: {fileID: 3384734054292405882}
 --- !u!58 &1176832416722504878
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -301,7 +284,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27328ece192dcce4fb428aaf94f7645e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 50
+--- !u!114 &1790159715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3384734054194506274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b6dee69fe210a40b3b1a16fd7de8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  timer: 1
+  shootDelay: 1
+  patrol: 1
+  aggro: 0
+  trackPlayer: 0
+  laser: {fileID: 931692346010555205, guid: 88db7056d0e6b2b4286c349ac6d09383, type: 3}
+  gun: {fileID: 3384734054292405882}
+--- !u!114 &4516001471407983703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3384734054194506274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3b6dee69fe210a40b3b1a16fd7de8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  timer: 3
+  shootDelay: 1
+  patrol: 1
+  aggro: 0
+  trackPlayer: 0
+  laser: {fileID: 931692346010555205, guid: 88db7056d0e6b2b4286c349ac6d09383, type: 3}
+  gun: {fileID: 3384734054292405882}
 --- !u!1 &3384734054292405882
 GameObject:
   m_ObjectHideFlags: 0

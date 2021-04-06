@@ -9,6 +9,7 @@ public class Lordakia : Npc
     {
         Aggro();
         TrackPlayer();
+        RandomMovement();
     }
 
     public override void Aggro()
@@ -19,5 +20,10 @@ public class Lordakia : Npc
     public override void TrackPlayer()
     {
         base.TrackPlayer();  
+    }
+
+    public override void RandomMovement()
+    {
+        base.RandomMovement();
     }
 }

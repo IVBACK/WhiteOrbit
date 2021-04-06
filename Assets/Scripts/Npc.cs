@@ -8,38 +8,32 @@ public class Npc : MonoBehaviour
     Vector3 movement;
     Vector3 target;
     Vector3 lastPlayerPos;
-    //Vector3 randomPos;
+    Vector3 randomPos;
 
     [SerializeField] float speed = 1f;    
-    //[SerializeField] float timer = 1;
+    [SerializeField] float timer = 3f;
     [SerializeField] float shootDelay = 1f;
 
+    [SerializeField] bool patrol = true;
     [SerializeField] bool aggro = false;
-    bool trackPlayer = false;
+    [SerializeField] bool trackPlayer = false;
 
     [SerializeField] GameObject laser;
     [SerializeField] GameObject gun;
 
     Quaternion toTargetRotation;
 
-    //float x;
-    //float y;
-
-    /*private void RandomMovement()
+    public virtual void RandomMovement()
     {
-        if(timer <= 0)
-        {
-            x = Random.Range(-5f, 5f);
-            y = Random.Range(-5f, 5f);
-            randomPos = new Vector3(x, y);
-            Debug.Log(randomPos);
-            transform.position = Vector3.MoveTowards(transform.position, randomPos, speed * Time.deltaTime);
-            movement = randomPos;
-            timer = 3;
-        }
+        if (patrol != true) { return; }
         timer -= Time.deltaTime;
+        transform.position += randomPos * 0.5f * Time.deltaTime;
+        if (timer >= 1) { return; }
+        Debug.Log(randomPos);
+        randomPos = new Vector3(Random.Range(-3f,3f), Random.Range(-3f, 3f));       
+        timer = 3f;
+    }
 
-    }*/
 
     public virtual void Aggro()
     {
@@ -80,6 +74,7 @@ public class Npc : MonoBehaviour
         }
         else
         {
+            patrol = true;
             trackPlayer = false;
         }
     }
@@ -89,6 +84,7 @@ public class Npc : MonoBehaviour
         if (collision.GetComponent<Player>())
         {
             aggro = true;
+            patrol = false;
             StartCoroutine(ShootLaser());
         }
     }
@@ -100,7 +96,7 @@ public class Npc : MonoBehaviour
             aggro = false;
             lastPlayerPos = FindObjectOfType<Player>().transform.position;
             movement = lastPlayerPos;
-            trackPlayer = true;            
+            trackPlayer = true;
         }        
     }
 

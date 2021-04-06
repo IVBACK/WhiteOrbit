@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 public class GalaxyGate : MonoBehaviour
 {
 
-    [SerializeField] int sceneIndexForGate;
+    //[SerializeField] int sceneIndexForGate;
+
+    [SerializeField] GameObject warpTarget;
 
     [SerializeField] float timer = 3f;
 
     [SerializeField] bool player = false;
+
+    GameObject playerShip;
 
     private void Update()
     {
@@ -23,7 +27,7 @@ public class GalaxyGate : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            SceneManager.LoadScene(sceneIndexForGate);
+            playerShip.transform.position = warpTarget.transform.position;
         }
     }
 
@@ -31,6 +35,7 @@ public class GalaxyGate : MonoBehaviour
     {
         if (collision.GetComponent<Player>())
         {
+            playerShip = collision.gameObject;
             player = true;
         }
     }
@@ -38,7 +43,7 @@ public class GalaxyGate : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<Player>())
-        {
+        {          
             player = false;
             timer = 3f;           
         }
