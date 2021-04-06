@@ -100,14 +100,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5618569798105714749}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -182,7 +182,9 @@ MonoBehaviour:
   speed: 1
   timer: 1
   shootDelay: 1
+  patrol: 1
   aggro: 0
+  trackPlayer: 0
   laser: {fileID: 8956582450753928806, guid: b818b3e94de386047aece5062d6787a7, type: 3}
   gun: {fileID: 5618569798544655461}
 --- !u!1 &5618569798544655461

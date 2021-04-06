@@ -8,6 +8,7 @@ public class Goliath : Npc
     {
         Aggro();
         TrackPlayer();
+        RandomMovement();
         Rotate();
     }
 
@@ -25,4 +26,11 @@ public class Goliath : Npc
     {
         base.Rotate();
     }
+
+    public override void RandomMovement()
+    {
+        base.RandomMovement();
+    }
+
+    
 }

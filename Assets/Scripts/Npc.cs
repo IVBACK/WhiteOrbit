@@ -26,12 +26,12 @@ public class Npc : MonoBehaviour
     public virtual void RandomMovement()
     {
         if (patrol != true) { return; }
-        timer -= Time.deltaTime;
-        transform.position += randomPos * 0.5f * Time.deltaTime;
-        if (timer >= 1) { return; }
-        Debug.Log(randomPos);
-        randomPos = new Vector3(Random.Range(-3f,3f), Random.Range(-3f, 3f));       
-        timer = 3f;
+        movement = randomPos;
+        transform.position = Vector3.MoveTowards(transform.position, randomPos, Time.deltaTime * 1);
+        if (transform.position == randomPos)
+        {
+            randomPos = new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
+        }     
     }
 
 
