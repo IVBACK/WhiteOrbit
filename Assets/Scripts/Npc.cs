@@ -11,7 +11,6 @@ public class Npc : MonoBehaviour
     Vector3 randomPos;
 
     [SerializeField] float speed = 1f;    
-    [SerializeField] float timer = 3f;
     [SerializeField] float shootDelay = 1f;
 
     [SerializeField] bool patrol = true;
@@ -33,7 +32,6 @@ public class Npc : MonoBehaviour
             randomPos = new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
         }     
     }
-
 
     public virtual void Aggro()
     {
@@ -70,7 +68,6 @@ public class Npc : MonoBehaviour
         if(transform.position != lastPlayerPos)
         {
             transform.position = Vector3.MoveTowards(transform.position, lastPlayerPos, speed * Time.deltaTime);
-            Debug.Log(lastPlayerPos);
         }
         else
         {
@@ -107,6 +104,9 @@ public class Npc : MonoBehaviour
     public virtual void OnDestroy()
     {
         Player player = FindObjectOfType<Player>();
-        player.GetComponent<Player>().SetPlayerLockStateFalse();
+        if(player != null)
+        {
+            player.GetComponent<Player>().SetPlayerLockStateFalse();
+        }       
     }
 }

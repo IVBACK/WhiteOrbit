@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7660511133119807766}
   - component: {fileID: 3149964133201864361}
   - component: {fileID: 5660644624926898699}
-  - component: {fileID: 5553256381322877085}
+  - component: {fileID: 6703842538771127212}
   m_Layer: 9
-  m_Name: Npc Lordakia Laser
+  m_Name: Npc Laser Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5553256381322877085
+--- !u!114 &6703842538771127212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,8 +141,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 931692346010555205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4591c29c397c4bc4ba1a4bfbd280b065, type: 3}
+  m_Script: {fileID: 11500000, guid: faf664d618ddb294a863246c8ac6932b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 10
-  laserLifeTime: 0.6
+  projectileSpeed: 1
+  laserLifeTime: 0.3

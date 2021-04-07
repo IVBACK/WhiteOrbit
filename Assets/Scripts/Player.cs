@@ -81,13 +81,4 @@ public class Player : MonoBehaviour
         isLocked = false;
         playerTargetSystem.SetLockStateFalse();
     }
-
-    /*private void OnDestroy()
-    {
-        EnemyLaser[] enemyLasers = FindObjectsOfType<EnemyLaser>();
-        foreach (EnemyLaser lasers in enemyLasers)
-        {
-            Destroy(gameObject);
-        }
-    }*/
 }

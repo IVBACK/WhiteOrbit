@@ -10,6 +10,7 @@ public class NpcAlien : Npc
         Aggro();
         TrackPlayer();
         RandomMovement();
+        Rotate();
     }
 
     public override void Aggro()
@@ -25,5 +26,10 @@ public class NpcAlien : Npc
     public override void RandomMovement()
     {
         base.RandomMovement();
+    }
+
+    public override void Rotate()
+    {
+        base.Rotate();
     }
 }

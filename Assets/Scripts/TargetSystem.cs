@@ -26,7 +26,6 @@ public class TargetSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SetTargetedStateFalse();
-            FindObjectOfType<Npc>().GetComponent<TargetSystem>().SetTargetedStateFalse();
             FindObjectOfType<Player>().SetPlayerLockStateFalse();
         }
     }
@@ -62,14 +61,14 @@ public class TargetSystem : MonoBehaviour
         isTargeted = true;
     }
 
-    public void SetLockStateTrue()
-    {
-        isLocked = true;
-    }
-
     public void SetLockStateFalse()
     {
         isLocked = false;
+    }
+
+    public void SetLockStateTrue()
+    {
+        isLocked = true;
     }
 
     public Vector3 ReturnCurrentTargetPos()
