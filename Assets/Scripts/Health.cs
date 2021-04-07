@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void TakeDamage()
+    public void DamageHealth()
     {
         health -= 20;
         if(health <= 0)

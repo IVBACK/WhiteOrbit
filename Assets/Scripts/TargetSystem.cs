@@ -19,6 +19,7 @@ public class TargetSystem : MonoBehaviour
     {
         SetTargetedStateTrue();
         FindObjectOfType<Player>().SetPlayerLockStateTrue();
+        GetComponent<Npc>().SetTargetCrossOn();
     } 
 
     public void BreakPlayerLock()
@@ -27,6 +28,7 @@ public class TargetSystem : MonoBehaviour
         {
             SetTargetedStateFalse();
             FindObjectOfType<Player>().SetPlayerLockStateFalse();
+            GetComponent<Npc>().SetTargetCrossOff();
         }
     }
 

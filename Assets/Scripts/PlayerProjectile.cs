@@ -34,7 +34,7 @@ public class PlayerProjectile : Projectile
         if (!target.GetComponent<Player>())
         {
             Debug.Log("HIT");
-            target.GetComponent<Health>().TakeDamage();
+            target.GetComponent<Health>().DamageHealth();
             Destroy(gameObject);
         }
     }

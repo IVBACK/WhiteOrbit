@@ -17,10 +17,17 @@ public class Npc : MonoBehaviour
     [SerializeField] bool aggro = false;
     [SerializeField] bool trackPlayer = false;
 
+    [SerializeField] GameObject targetCross;
+
     [SerializeField] GameObject laser;
     [SerializeField] GameObject gun;
 
     Quaternion toTargetRotation;
+
+    private void Start()
+    {
+        SetTargetCrossOff();
+    }
 
     public virtual void RandomMovement()
     {
@@ -74,6 +81,16 @@ public class Npc : MonoBehaviour
             patrol = true;
             trackPlayer = false;
         }
+    }
+
+    public void SetTargetCrossOn()
+    {
+        targetCross.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    public void SetTargetCrossOff()
+    {
+        targetCross.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
