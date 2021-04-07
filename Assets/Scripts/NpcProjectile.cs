@@ -19,21 +19,4 @@ public class NpcProjectile : Projectile
     {
         base.DestroyLaserAfterSec();
     }
-
-    private void OnCollisionEnter2D(Collision2D otherCollider)
-    {
-        GameObject target = otherCollider.gameObject;
-        if (target.GetComponentInChildren<Shield>().IsShieldActive())
-        {
-            Debug.Log("DAMAGE SHIELD");
-            target.GetComponentInChildren<Shield>().DamageShield();
-            Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("DAMAGE HEALTH");
-            target.GetComponent<Health>().DamageHealth();
-            Destroy(gameObject);
-        }
-    }
 }

@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] int health = 100;
+    public int health = 100;
+    public int Maxhealth = 100;
+
+    public HealthBar healthbar;
+
+    private void Start()
+    {
+        healthbar.SetHealthBar(health, Maxhealth);
+    }
     
     private void HandleDead()
     {
@@ -14,7 +22,8 @@ public class Health : MonoBehaviour
     public void DamageHealth()
     {
         health -= 20;
-        if(health <= 0)
+        healthbar.SetHealthBar(health, Maxhealth);
+        if (health <= 0)
         {
             HandleDead();
         }

@@ -27,15 +27,4 @@ public class PlayerProjectile : Projectile
     {
         base.DestroyLaserAfterSec();
     }
-
-    private void OnCollisionEnter2D(Collision2D otherCollider)
-    {
-        GameObject target = otherCollider.gameObject;
-        if (!target.GetComponent<Player>())
-        {
-            Debug.Log("HIT");
-            target.GetComponent<Health>().DamageHealth();
-            Destroy(gameObject);
-        }
-    }
 }

@@ -18,4 +18,63 @@ public class Projectile : MonoBehaviour
     {
         Destroy(this.gameObject, laserLifeTime);
     }
+
+    private void OnCollisionEnter2D(Collision2D otherCollider)
+    {
+        GameObject target = otherCollider.gameObject;
+        if(target.GetComponent<Player>())
+        {
+            CheckPlayerShield(target);
+        }
+        else
+        {
+            if(target.GetComponentInChildren<Shield>() != null)
+            {
+                CheckNpcShield(target);
+            }
+            else
+            {
+                DamageHealth(target);
+            }            
+        }
+    }
+
+    private void CheckNpcShield(GameObject target)
+    {
+
+        if (target.GetComponentInChildren<Shield>().IsShieldActive())
+        {
+            DamageShield(target);
+        }
+        else
+        {
+            DamageHealth(target);
+        }
+    }
+
+    private void CheckPlayerShield(GameObject target)
+    {
+        if (target.GetComponentInChildren<Shield>().IsShieldActive())
+        {
+            DamageShield(target);
+        }
+        else
+        {
+            DamageHealth(target);
+        }
+    }
+
+    private void DamageShield(GameObject target)
+    {
+        Debug.Log("DAMAGE SHIELD");
+        target.GetComponentInChildren<Shield>().DamageShield();
+        Destroy(gameObject);
+    }
+
+    private void DamageHealth(GameObject target)
+    {
+        Debug.Log("DAMAGE HEALTH");
+        target.GetComponent<Health>().DamageHealth();
+        Destroy(gameObject);
+    }
 }

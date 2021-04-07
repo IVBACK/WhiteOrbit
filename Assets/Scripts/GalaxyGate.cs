@@ -6,16 +6,14 @@ using UnityEngine.SceneManagement;
 public class GalaxyGate : MonoBehaviour
 {
 
-    //[SerializeField] int sceneIndexForGate;
-
-    [SerializeField] GameObject warpTarget;
-
+    [SerializeField] int warSceneIndex;
+    
     [SerializeField] float timer = 3f;
 
     [SerializeField] bool player = false;
 
     GameObject playerShip;
-
+    
     private void Update()
     {
         Timer();
@@ -27,7 +25,7 @@ public class GalaxyGate : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            playerShip.transform.position = warpTarget.transform.position;
+            SceneManager.LoadScene(warSceneIndex);
         }
     }
 

@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    [SerializeField] int shieldPoint = 100;
+    public float shieldPoints = 100f;
+    public float maxShieldPoints = 100f;
     [SerializeField] float shieldTimer = 10f;
 
     [SerializeField] bool isShieldActive = true;
 
     [SerializeField] bool isShieldDamaged = false;
+
+    public ShieldBar shieldBar;
+
+    private void Start()
+    {
+        shieldBar.SetShieldBar(shieldPoints, maxShieldPoints);
+    }
 
     private void Update()
     {
@@ -20,8 +28,9 @@ public class Shield : MonoBehaviour
     {
         isShieldDamaged = true;
         shieldTimer = 10f;
-        shieldPoint -= 20;
-        if (shieldPoint <= 0)
+        shieldPoints -= 20;
+        shieldBar.SetShieldBar(shieldPoints, maxShieldPoints);
+        if (shieldPoints <= 0)
         {
             SetShieldActiveFalse();
         }
@@ -37,6 +46,18 @@ public class Shield : MonoBehaviour
         }
     }
 
+    private IEnumerator RechargeShield()
+    {
+        while(shieldPoints < maxShieldPoints)
+        {
+            shieldPoints += 10f;
+            shieldBar.SetShieldBar(shieldPoints, maxShieldPoints);
+            yield return new WaitForSeconds(1);
+        }
+        StopCoroutine(RechargeShield());
+        Debug.Log("Shield Recharge Stopped");
+    }
+
     public bool IsShieldActive()
     {
         return isShieldActive;
@@ -46,7 +67,7 @@ public class Shield : MonoBehaviour
     {
         isShieldActive = true;
         isShieldDamaged = false;
-        shieldPoint = 100;
+        StartCoroutine(RechargeShield());
         GetComponent<SpriteRenderer>().enabled = true;
     }
 

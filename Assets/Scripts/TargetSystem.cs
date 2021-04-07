@@ -44,7 +44,6 @@ public class TargetSystem : MonoBehaviour
                     targetPos = targetsystem.transform.position;
                 }
             }
-            Debug.Log(targetPos);
 
             var relativePos = targetPos - transform.position;
             var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
