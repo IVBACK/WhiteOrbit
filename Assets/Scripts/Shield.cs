@@ -27,6 +27,7 @@ public class Shield : MonoBehaviour
     public void DamageShield()
     {
         isShieldDamaged = true;
+        StopCoroutine(RechargeShield());
         shieldTimer = 10f;
         shieldPoints -= 20;
         shieldBar.SetShieldBar(shieldPoints, maxShieldPoints);

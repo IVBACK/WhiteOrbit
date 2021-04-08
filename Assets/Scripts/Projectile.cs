@@ -22,59 +22,19 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D otherCollider)
     {
         GameObject target = otherCollider.gameObject;
-        if(target.GetComponent<Player>())
+        Shield targetShield = target.GetComponentInChildren<Shield>();
+        Health targetHealth = target.GetComponent<Health>();
+        if ( targetShield != null && targetShield.IsShieldActive())
         {
-            CheckPlayerShield(target);
+            Debug.Log("DAMAGE SHIELD");
+            targetShield.DamageShield();
+            Destroy(gameObject);
         }
-        else
+        else if(targetHealth != null)
         {
-            if(target.GetComponentInChildren<Shield>() != null)
-            {
-                CheckNpcShield(target);
-            }
-            else
-            {
-                DamageHealth(target);
-            }            
+            Debug.Log("DAMAGE HEALTH");
+            targetHealth.DamageHealth();
+            Destroy(gameObject);
         }
-    }
-
-    private void CheckNpcShield(GameObject target)
-    {
-
-        if (target.GetComponentInChildren<Shield>().IsShieldActive())
-        {
-            DamageShield(target);
-        }
-        else
-        {
-            DamageHealth(target);
-        }
-    }
-
-    private void CheckPlayerShield(GameObject target)
-    {
-        if (target.GetComponentInChildren<Shield>().IsShieldActive())
-        {
-            DamageShield(target);
-        }
-        else
-        {
-            DamageHealth(target);
-        }
-    }
-
-    private void DamageShield(GameObject target)
-    {
-        Debug.Log("DAMAGE SHIELD");
-        target.GetComponentInChildren<Shield>().DamageShield();
-        Destroy(gameObject);
-    }
-
-    private void DamageHealth(GameObject target)
-    {
-        Debug.Log("DAMAGE HEALTH");
-        target.GetComponent<Health>().DamageHealth();
-        Destroy(gameObject);
-    }
+    }   
 }
