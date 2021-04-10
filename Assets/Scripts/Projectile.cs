@@ -26,13 +26,11 @@ public class Projectile : MonoBehaviour
         Health targetHealth = target.GetComponent<Health>();
         if ( targetShield != null && targetShield.IsShieldActive())
         {
-            Debug.Log("DAMAGE SHIELD");
             targetShield.DamageShield();
             Destroy(gameObject);
         }
         else if(targetHealth != null)
         {
-            Debug.Log("DAMAGE HEALTH");
             targetHealth.DamageHealth();
             Destroy(gameObject);
         }

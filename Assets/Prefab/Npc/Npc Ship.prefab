@@ -703,7 +703,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 8
 --- !u!114 &1033599635232730573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,6 +719,7 @@ MonoBehaviour:
   health: 100
   Maxhealth: 100
   healthbar: {fileID: 1401852714874831410}
+  explosion: {fileID: 6280710690100643192, guid: 55c427880e81e074fbe423066dc21406, type: 3}
 --- !u!114 &1369052893
 MonoBehaviour:
   m_ObjectHideFlags: 0

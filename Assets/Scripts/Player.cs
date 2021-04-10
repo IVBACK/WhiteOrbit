@@ -9,8 +9,9 @@ public class Player : MonoBehaviour
 
     [SerializeField] GameObject[] guns;
     [SerializeField] GameObject laser;
-    [SerializeField] GameObject gun;  //Placeholder
+    [SerializeField] GameObject gun;
 
+    Vector3 spawn;
     Vector3 mousePos;
 
     Quaternion rotation;
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour
     }
 
     private void Movement()
-    {
+    {       
         if(Input.GetMouseButton(0))
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -80,5 +81,10 @@ public class Player : MonoBehaviour
     {
         isLocked = false;
         playerTargetSystem.SetLockStateFalse();
+    }
+
+    public Vector3 ReturnSpawnPos()
+    {
+        return spawn;
     }
 }

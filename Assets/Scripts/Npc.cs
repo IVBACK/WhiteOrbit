@@ -24,9 +24,10 @@ public class Npc : MonoBehaviour
 
     Quaternion toTargetRotation;
 
-    private void Start()
+    private void Awake()
     {
         SetTargetCrossOff();
+        randomPos = new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f));       
     }
 
     public virtual void RandomMovement()

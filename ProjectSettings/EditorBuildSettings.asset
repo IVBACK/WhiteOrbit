@@ -10,5 +10,8 @@ EditorBuildSettings:
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Sector 2.unity
-    guid: 24125dc6fc4dfb040af2dd4a4c854f47
+    guid: 00bce434ee5c5124898b00daa250fc58
+  - enabled: 1
+    path: Assets/Scenes/Sector 3.unity
+    guid: a14ec8c2b8120a74e914506c5554abfd
   m_configObjects: {}

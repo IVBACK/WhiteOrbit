@@ -26,8 +26,8 @@ public class Shield : MonoBehaviour
 
     public void DamageShield()
     {
+        StopAllCoroutines();
         isShieldDamaged = true;
-        StopCoroutine(RechargeShield());
         shieldTimer = 10f;
         shieldPoints -= 20;
         shieldBar.SetShieldBar(shieldPoints, maxShieldPoints);
@@ -49,14 +49,14 @@ public class Shield : MonoBehaviour
 
     private IEnumerator RechargeShield()
     {
-        while(shieldPoints < maxShieldPoints)
+        while (shieldPoints < maxShieldPoints)
         {
             shieldPoints += 10f;
             shieldBar.SetShieldBar(shieldPoints, maxShieldPoints);
+            Debug.Log("Shield Recharging");
             yield return new WaitForSeconds(1);
         }
-        StopCoroutine(RechargeShield());
-        Debug.Log("Shield Recharge Stopped");
+        Debug.Log("Shield Recharge Completed");       
     }
 
     public bool IsShieldActive()
@@ -68,7 +68,8 @@ public class Shield : MonoBehaviour
     {
         isShieldActive = true;
         isShieldDamaged = false;
-        StartCoroutine(RechargeShield());
+        Debug.Log("Shield Recharge Started");
+        StartCoroutine(RechargeShield());       
         GetComponent<SpriteRenderer>().enabled = true;
     }
 

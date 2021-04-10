@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GalaxyGate : MonoBehaviour
 {
+    [SerializeField] Vector3 spawnPos;
 
     [SerializeField] int warSceneIndex;
     
@@ -41,7 +42,8 @@ public class GalaxyGate : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<Player>())
-        {          
+        {
+            FindObjectOfType<SpawnManager>().SetSpawn(spawnPos);
             player = false;
             timer = 3f;           
         }

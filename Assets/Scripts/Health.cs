@@ -9,6 +9,8 @@ public class Health : MonoBehaviour
 
     public HealthBar healthbar;
 
+    [SerializeField] GameObject explosion;
+
     private void Start()
     {
         healthbar.SetHealthBar(health, Maxhealth);
@@ -16,6 +18,7 @@ public class Health : MonoBehaviour
     
     private void HandleDead()
     {
+        Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

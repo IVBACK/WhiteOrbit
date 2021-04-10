@@ -9,6 +9,8 @@ public class TargetSystem : MonoBehaviour
     [SerializeField] bool isTargeted = false;
     [SerializeField] bool isLocked = false;
 
+    [SerializeField]
+
     private void Update()
     {
         BreakPlayerLock();
@@ -42,6 +44,7 @@ public class TargetSystem : MonoBehaviour
                 if (targetsystem.ReturnTargetedState())
                 {
                     targetPos = targetsystem.transform.position;
+                    CheckTargetDistance();
                 }
             }
 
@@ -50,6 +53,11 @@ public class TargetSystem : MonoBehaviour
             var toTargetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = toTargetRotation;
         }
+    }
+
+    private void CheckTargetDistance()
+    {
+        var relativePos = targetPos - transform.position;
     }
 
     public void SetTargetedStateFalse()
