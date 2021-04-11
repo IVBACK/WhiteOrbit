@@ -30,7 +30,10 @@ public class TargetSystem : MonoBehaviour
         {
             SetTargetedStateFalse();
             FindObjectOfType<Player>().SetPlayerLockStateFalse();
-            GetComponent<Npc>().SetTargetCrossOff();
+            if(GetComponent<Npc>() != null)
+            {
+                GetComponent<Npc>().SetTargetCrossOff();
+            }           
         }
     }
 

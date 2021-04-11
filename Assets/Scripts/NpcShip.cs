@@ -30,7 +30,5 @@ public class NpcShip : Npc
     public override void RandomMovement()
     {
         base.RandomMovement();
-    }
-
-    
+    }   
 }

@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     TargetSystem playerTargetSystem;
 
     bool isLocked;
+    public bool isClicked = false;
 
     private void Start()
     {
@@ -27,18 +28,20 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        CheckIsClicked();
         Movement();
         StartShooting();
     }
 
     private void Movement()
-    {       
-        if(Input.GetMouseButton(0))
+    {
+        if(isClicked != true) { return; }
+        if (Input.GetMouseButton(0))
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Rotate();           
+            Rotate();
         }
-        transform.position = Vector3.MoveTowards(transform.position, mousePos, speed * Time.deltaTime);      
+        transform.position = Vector3.MoveTowards(transform.position, mousePos, speed * Time.deltaTime);
     }
 
     private void Rotate()
@@ -68,6 +71,14 @@ public class Player : MonoBehaviour
             GameObject laserP = Instantiate(laser, gun.transform.position, Quaternion.identity) as GameObject;
             laserP.transform.rotation = rotation;
             yield return new WaitForSeconds(shootDelay);           
+        }       
+    }
+
+    private void CheckIsClicked()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            isClicked = true;
         }       
     }
 

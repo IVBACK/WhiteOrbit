@@ -10,6 +10,7 @@ public class Npc : MonoBehaviour
     Vector3 lastPlayerPos;
     Vector3 randomPos;
 
+    [SerializeField] int exp;
     [SerializeField] float speed = 1f;    
     [SerializeField] float shootDelay = 1f;
 
@@ -27,7 +28,7 @@ public class Npc : MonoBehaviour
     private void Awake()
     {
         SetTargetCrossOff();
-        randomPos = new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f));       
+        randomPos = new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f));       
     }
 
     public virtual void RandomMovement()
@@ -37,7 +38,7 @@ public class Npc : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, randomPos, Time.deltaTime * 1);
         if (transform.position == randomPos)
         {
-            randomPos = new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f));
+            randomPos = new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f));
         }     
     }
 
@@ -119,12 +120,13 @@ public class Npc : MonoBehaviour
         }        
     }
 
-    public virtual void OnDestroy()
+    private void OnDestroy()
     {
         Player player = FindObjectOfType<Player>();
         if(player != null)
         {
             player.GetComponent<Player>().SetPlayerLockStateFalse();
+            player.GetComponent<Level>().GetExp(exp);
         }       
     }
 }
