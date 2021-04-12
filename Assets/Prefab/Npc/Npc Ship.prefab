@@ -717,9 +717,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  Maxhealth: 100
-  healthbar: {fileID: 1401852714874831410}
+  maxHealth: 100
   explosion: {fileID: 6280710690100643192, guid: 55c427880e81e074fbe423066dc21406, type: 3}
+  healthbar: {fileID: 1401852714874831410}
+  playerStatusBars: {fileID: 0}
 --- !u!114 &1369052893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,6 +733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efdfafd16131984e8124d17ff48ddcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exp: 50
   speed: 3
   shootDelay: 1
   patrol: 1

@@ -9,27 +9,27 @@ public class Level : MonoBehaviour
     [SerializeField] float totalExp = 0;
     [SerializeField] float maxExp = 100;
 
-    public ExpBar expBar;
+    [SerializeField] Text levelText;
 
-    public Text expText; 
+    [SerializeField] PlayerStatusBars playerStatusBars;
 
     void Start()
     {
-        expBar.SetExpBar(totalExp, maxExp);
-        expText.text = level.ToString();
+        playerStatusBars.SetExpBar(totalExp, maxExp);
+        levelText.text = level.ToString();
     }
 
     public void GetExp(int exp)
     {
         totalExp += exp;
-        expBar.SetExpBar(totalExp, maxExp);
+        playerStatusBars.SetExpBar(totalExp, maxExp);
         if(totalExp >= maxExp)
         {
             level += 1;
-            expText.text = level.ToString();
+            levelText.text = level.ToString();
             totalExp = 0;
             maxExp += 50;
-            expBar.SetExpBar(totalExp, maxExp);
+            playerStatusBars.SetExpBar(totalExp, maxExp);
         }
     }
 }

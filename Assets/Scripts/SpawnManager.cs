@@ -24,7 +24,6 @@ public class SpawnManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log(spawn);
         GameObject player = GameObject.Find("PlayerShip");
         player.GetComponent<Player>().isClicked = false;
         player.transform.position = spawn;

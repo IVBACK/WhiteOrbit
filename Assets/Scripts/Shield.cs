@@ -6,17 +6,20 @@ public class Shield : MonoBehaviour
 {
     public float shieldPoints = 100f;
     public float maxShieldPoints = 100f;
-    [SerializeField] float shieldTimer = 10f;
+    
+    float shieldTimer = 10f;
 
-    [SerializeField] bool isShieldActive = true;
+    bool isShieldActive = true;
+    bool isShieldDamaged = false;
 
-    [SerializeField] bool isShieldDamaged = false;
+    [SerializeField] ShieldBar shieldBar;
 
-    public ShieldBar shieldBar;
+    [SerializeField] PlayerStatusBars playerStatusBars;
 
     private void Start()
     {
-        shieldBar.SetShieldBar(shieldPoints, maxShieldPoints);
+        CheckAndSetShieldBar();
+        CheckAndSetStatusBar();
     }
 
     private void Update()
@@ -30,7 +33,8 @@ public class Shield : MonoBehaviour
         isShieldDamaged = true;
         shieldTimer = 10f;
         shieldPoints -= 20;
-        shieldBar.SetShieldBar(shieldPoints, maxShieldPoints);
+        CheckAndSetShieldBar();
+        CheckAndSetStatusBar();
         if (shieldPoints <= 0)
         {
             SetShieldActiveFalse();
@@ -52,7 +56,8 @@ public class Shield : MonoBehaviour
         while (shieldPoints < maxShieldPoints)
         {
             shieldPoints += 10f;
-            shieldBar.SetShieldBar(shieldPoints, maxShieldPoints);
+            CheckAndSetShieldBar();
+            CheckAndSetStatusBar();
             Debug.Log("Shield Recharging");
             yield return new WaitForSeconds(1);
         }
@@ -77,5 +82,21 @@ public class Shield : MonoBehaviour
     {
         isShieldActive = false;
         GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    private void CheckAndSetStatusBar()
+    {
+        if (playerStatusBars != null)
+        {
+            playerStatusBars.SetShieldBar(shieldPoints, maxShieldPoints);
+        }
+    }
+
+    private void CheckAndSetShieldBar()
+    {
+        if(shieldBar != null)
+        {
+            shieldBar.SetShieldBar(shieldPoints, maxShieldPoints);
+        }
     }
 }

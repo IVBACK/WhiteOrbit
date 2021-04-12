@@ -5,30 +5,53 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int health = 100;
-    public int Maxhealth = 100;
-
-    public HealthBar healthbar;
-
+    public int maxHealth = 100;
+        
     [SerializeField] GameObject explosion;
+
+    [SerializeField] HealthBar healthbar;
+
+    [SerializeField] PlayerStatusBars playerStatusBars;
 
     private void Start()
     {
-        healthbar.SetHealthBar(health, Maxhealth);
+        CheckAndSetHealthBar();
+        CheckAndSetStatusBar();
     }
-    
+
     private void HandleDead()
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
-    public void DamageHealth()
+    public virtual void DamageHealth()
     {
         health -= 20;
-        healthbar.SetHealthBar(health, Maxhealth);
+        CheckAndSetHealthBar();
         if (health <= 0)
         {
             HandleDead();
+        }
+    }
+
+    private void CheckAndSetStatusBar()
+    {
+        if(playerStatusBars != null)
+        {
+            playerStatusBars.SetHealthBar(health, maxHealth);
+        }      
+    }
+
+    private void CheckAndSetHealthBar()
+    {
+        if (healthbar != null)
+        {
+            healthbar.SetHealthBar(health, maxHealth);
+        }
+        else
+        {
+            playerStatusBars.SetHealthBar(health, maxHealth);
         }
     }
 }
