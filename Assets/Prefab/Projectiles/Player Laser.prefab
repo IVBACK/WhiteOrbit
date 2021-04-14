@@ -144,5 +144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79a3e835d94ff543acda44f210c1e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 10
-  laserLifeTime: 0.6
+  projectileSpeed: 50
+  projectileLifeTime: 1
+  damage: 10

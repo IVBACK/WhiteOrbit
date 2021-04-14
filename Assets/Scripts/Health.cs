@@ -22,9 +22,9 @@ public class Health : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public virtual void DamageHealth()
+    public virtual void DamageHealth(int damage)
     {
-        health -= 20;
+        health -= damage;
         SetHealthBar();
         if (health <= 0)
         {

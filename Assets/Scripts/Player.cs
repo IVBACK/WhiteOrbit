@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject rocketlauncher;
     [SerializeField] GameObject rocket;
 
+    [SerializeField] CooldownBars cooldownBars;
+
     Vector3 mousePos;
 
     Quaternion rotation;
@@ -80,6 +82,8 @@ public class Player : MonoBehaviour
         if (isLocked != true) { return; }
         if (Input.GetMouseButtonDown(1))
         {
+            if(cooldownBars.rocketTimer != false) { return; }
+            cooldownBars.StartRocketTimer();
             GameObject rocketP = Instantiate(rocket, gun.transform.position, Quaternion.identity) as GameObject;
             rocketP.transform.rotation = rotation;
         }

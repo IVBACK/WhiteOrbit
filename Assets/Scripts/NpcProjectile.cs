@@ -7,7 +7,7 @@ public class NpcProjectile : Projectile
     void FixedUpdate()
     {
         ProjectileMove();
-        DestroyLaserAfterSec();
+        DestroyProjectileAfterSec();
     }
 
     public override void ProjectileMove()
@@ -15,8 +15,8 @@ public class NpcProjectile : Projectile
         base.ProjectileMove();
     }
 
-    public override void DestroyLaserAfterSec()
+    public override void DestroyProjectileAfterSec()
     {
-        base.DestroyLaserAfterSec();
+        base.DestroyProjectileAfterSec();
     }
 }

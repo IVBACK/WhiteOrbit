@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rocket : MonoBehaviour
+public class Rocket : Projectile
 {
     Vector3 targetPos;
 
@@ -10,14 +10,14 @@ public class Rocket : MonoBehaviour
 
     bool isTargetPicked = false;
 
-    [SerializeField] float speed;
-
     [SerializeField] GameObject explosion;
 
     void Update()
     {
         LockTarget();
-        GuideToTarget();       
+        CheckTarget();
+        GuideToTarget();
+        DestroyProjectileAfterSec();
     }   
 
     private void LockTarget()
@@ -44,29 +44,26 @@ public class Rocket : MonoBehaviour
         Quaternion toTargetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = toTargetRotation;
 
-        MoveToTarget();
+        ProjectileMove();
     }
 
-    private void MoveToTarget()
+    private void CheckTarget()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        if(target == null)
+        {
+            isTargetPicked = false;
+            Destroy(gameObject);
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D otherCollider)
+    public override void ProjectileMove()
     {
-        GameObject target = otherCollider.gameObject;
-        Shield targetShield = target.GetComponentInChildren<Shield>();
-        Health targetHealth = target.GetComponent<Health>();
-        if (targetShield != null && targetShield.IsShieldActive())
-        {
-            targetShield.DamageShield();
-            Destroy(gameObject);
-        }
-        else if (targetHealth != null)
-        {
-            targetHealth.DamageHealth();
-            Destroy(gameObject);
-        }
+        base.ProjectileMove();
+    }
+
+    public override void DestroyProjectileAfterSec()
+    {
+        base.DestroyProjectileAfterSec();
     }
 
     private void OnDestroy()

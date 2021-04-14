@@ -5,18 +5,17 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] float projectileSpeed;
-    [SerializeField] float laserLifeTime = 0.6f;
-
-    Vector3 targetPos;
+    [SerializeField] float projectileLifeTime;
+    [SerializeField] int damage;
 
     public virtual void ProjectileMove()
     {
-        transform.Translate(Vector2.right * 1);
+        transform.Translate(Vector2.right * projectileSpeed * Time.deltaTime);
     }
 
-    public virtual void DestroyLaserAfterSec()
+    public virtual void DestroyProjectileAfterSec()
     {
-        Destroy(this.gameObject, laserLifeTime);
+        Destroy(this.gameObject, projectileLifeTime);
     }
 
     private void OnCollisionEnter2D(Collision2D otherCollider)
@@ -26,12 +25,12 @@ public class Projectile : MonoBehaviour
         Health targetHealth = target.GetComponent<Health>();
         if ( targetShield != null && targetShield.IsShieldActive())
         {
-            targetShield.DamageShield();
+            targetShield.DamageShield(damage);
             Destroy(gameObject);
         }
         else if(targetHealth != null)
         {
-            targetHealth.DamageHealth();
+            targetHealth.DamageHealth(damage);
             Destroy(gameObject);
         }
     }   

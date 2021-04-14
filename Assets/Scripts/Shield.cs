@@ -26,12 +26,12 @@ public class Shield : MonoBehaviour
         ShieldCooldown();
     }
 
-    public void DamageShield()
+    public void DamageShield(int damage)
     {
         StopAllCoroutines();
         isShieldDamaged = true;
         shieldTimer = 10f;
-        shieldPoints -= 20;
+        shieldPoints -= damage;
         SetShieldBar();
         if (shieldPoints <= 0)
         {

@@ -9,22 +9,22 @@ public class PlayerProjectile : Projectile
     private void Start()
     {
         player = FindObjectOfType<Player>();
+        transform.rotation = player.transform.rotation;
     }
 
     void FixedUpdate()
     {
-        PlayerProjectileMove();
-        DestroyLaserAfterSec();
+        ProjectileMove();
+        DestroyProjectileAfterSec();
     }
 
-    private void PlayerProjectileMove()
+    public override void ProjectileMove()
     {
-        transform.rotation = player.transform.rotation;
-        transform.Translate(Vector2.right * 1);
+        base.ProjectileMove();
     }
 
-    public override void DestroyLaserAfterSec()
+    public override void DestroyProjectileAfterSec()
     {
-        base.DestroyLaserAfterSec();
+        base.DestroyProjectileAfterSec();
     }
 }

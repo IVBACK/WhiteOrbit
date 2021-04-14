@@ -1283,7 +1283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5612379464838438648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.102, y: 0.285, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5961460462780898704}
@@ -1445,11 +1445,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   shootDelay: 0.5
-  guns:
-  - {fileID: 0}
-  - {fileID: 0}
-  laser: {fileID: 6987195347320262207, guid: 089c4e602511715438ebbde925e2f410, type: 3}
   gun: {fileID: 5961460462975045503}
+  laser: {fileID: 6987195347320262207, guid: 089c4e602511715438ebbde925e2f410, type: 3}
+  rocketlauncher: {fileID: 5612379464838438648}
+  rocket: {fileID: 3430313384583932612, guid: 36cd1cbc653981d478dfbf73104f7f69, type: 3}
   isClicked: 0
 --- !u!114 &5961460462094844565
 MonoBehaviour:
@@ -1497,7 +1496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  explosion: {fileID: 6280710690100643192, guid: 55c427880e81e074fbe423066dc21406, type: 3}
+  explosion: {fileID: 6280710690100643192, guid: 49e32eb1aa130164a90d1c0ed36b61a2, type: 3}
   healthbar: {fileID: 1429850103}
 --- !u!114 &1063954180
 MonoBehaviour:
