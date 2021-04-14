@@ -10,7 +10,9 @@ public class PlayerStatusBars : MonoBehaviour
     [SerializeField] Image healthBar;
     [SerializeField] Image shieldBar;
     [SerializeField] Text levelText;
-    
+
+    public Vector3 offset;
+
     public void SetExpBar(float exp, float maxExp)
     {
         expBar.fillAmount = exp / maxExp;
@@ -24,5 +26,12 @@ public class PlayerStatusBars : MonoBehaviour
     public void SetShieldBar(float shieldPoint, float maxShieldPoints)
     {
         shieldBar.fillAmount = shieldPoint / maxShieldPoints;
+    }
+
+    private void Update()
+    {
+        expBar.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
+        healthBar.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
+        shieldBar.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
     }
 }

@@ -5,16 +5,30 @@ using UnityEngine.UI;
 
 public class ShieldBar : MonoBehaviour
 {
-    public Slider slider;
-    public Color low;
-    public Color high;
-    public Vector3 offset;
+    [SerializeField] Slider slider;
+    [SerializeField] Color low;
+    [SerializeField] Color high;
+    [SerializeField] Vector3 offset;
 
-    public void SetShieldBar(float shieldPoint, float maxShield)
+    Shield shieldComp;
+
+    [SerializeField] bool alwaysOn;
+
+    private void Awake()
     {
-        slider.gameObject.SetActive(shieldPoint < maxShield);
-        slider.value = shieldPoint;
-        slider.maxValue = maxShield;
+        shieldComp = GetComponentInParent<Shield>();
+    }
+
+    private void Start()
+    {
+        shieldComp.SetShieldBar();
+    }
+
+    public void UpdateShieldBar(int shieldPoints, int maxShieldPoints)
+    {
+        slider.gameObject.SetActive(CheckAlwaysOn());
+        slider.value = shieldPoints;
+        slider.maxValue = maxShieldPoints;
 
         slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(low, high, slider.normalizedValue);
     }
@@ -22,5 +36,17 @@ public class ShieldBar : MonoBehaviour
     private void Update()
     {
         slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
+    }
+
+    private bool CheckAlwaysOn()
+    {
+        if (alwaysOn == true)
+        {
+            return true;
+        }
+        else
+        {
+            return shieldComp.shieldPoints < shieldComp.maxShieldPoints;
+        }
     }
 }

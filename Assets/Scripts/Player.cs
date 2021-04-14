@@ -7,11 +7,11 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 1f;
     [SerializeField] float shootDelay = 1f;
 
-    [SerializeField] GameObject[] guns;
-    [SerializeField] GameObject laser;
     [SerializeField] GameObject gun;
+    [SerializeField] GameObject laser;
+    [SerializeField] GameObject rocketlauncher;
+    [SerializeField] GameObject rocket;
 
-    Vector3 spawn;
     Vector3 mousePos;
 
     Quaternion rotation;
@@ -30,7 +30,8 @@ public class Player : MonoBehaviour
     {
         CheckIsClicked();
         Movement();
-        StartShooting();
+        StartShootingLaser();
+        ShootRocket();
     }
 
     private void Movement()
@@ -55,7 +56,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void StartShooting()
+    private void StartShootingLaser()
     {
         if (isLocked != true) { return; }
         if(Input.GetKeyDown(KeyCode.Space))
@@ -72,6 +73,16 @@ public class Player : MonoBehaviour
             laserP.transform.rotation = rotation;
             yield return new WaitForSeconds(shootDelay);           
         }       
+    }
+
+    private void ShootRocket()
+    {
+        if (isLocked != true) { return; }
+        if (Input.GetMouseButtonDown(1))
+        {
+            GameObject rocketP = Instantiate(rocket, gun.transform.position, Quaternion.identity) as GameObject;
+            rocketP.transform.rotation = rotation;
+        }
     }
 
     private void CheckIsClicked()
@@ -92,10 +103,5 @@ public class Player : MonoBehaviour
     {
         isLocked = false;
         playerTargetSystem.SetLockStateFalse();
-    }
-
-    public Vector3 ReturnSpawnPos()
-    {
-        return spawn;
     }
 }

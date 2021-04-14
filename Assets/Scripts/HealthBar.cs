@@ -5,14 +5,28 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Slider slider;
-    public Color low;
-    public Color high;
-    public Vector3 offset;
+    [SerializeField] Slider slider;
+    [SerializeField] Color low;
+    [SerializeField] Color high;
+    [SerializeField] Vector3 offset;
 
-    public void SetHealthBar(float health, float maxHealth)
+    Health healthComp;
+
+    [SerializeField] bool alwaysOn;
+
+    private void Awake()
     {
-        slider.gameObject.SetActive(health < maxHealth);
+        healthComp = GetComponentInParent<Health>();
+    }
+
+    private void Start()
+    {
+        healthComp.SetHealthBar();
+    }
+
+    public void UpdateHeatlhBar(int health, int maxHealth)
+    {
+        slider.gameObject.SetActive(CheckAlwaysOn());
         slider.value = health;
         slider.maxValue = maxHealth;
 
@@ -22,5 +36,17 @@ public class HealthBar : MonoBehaviour
     private void Update()
     {
         slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + offset);
+    }
+
+    private bool CheckAlwaysOn()
+    {
+        if(alwaysOn == true)
+        {
+            return true;
+        }
+        else
+        {
+            return healthComp.health < healthComp.maxHealth;
+        }
     }
 }

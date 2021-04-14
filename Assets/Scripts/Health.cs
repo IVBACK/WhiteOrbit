@@ -11,12 +11,9 @@ public class Health : MonoBehaviour
 
     [SerializeField] HealthBar healthbar;
 
-    [SerializeField] PlayerStatusBars playerStatusBars;
-
     private void Start()
     {
-        CheckAndSetHealthBar();
-        CheckAndSetStatusBar();
+        SetHealthBar();
     }
 
     private void HandleDead()
@@ -28,30 +25,15 @@ public class Health : MonoBehaviour
     public virtual void DamageHealth()
     {
         health -= 20;
-        CheckAndSetHealthBar();
+        SetHealthBar();
         if (health <= 0)
         {
             HandleDead();
         }
     }
 
-    private void CheckAndSetStatusBar()
+    public void SetHealthBar()
     {
-        if(playerStatusBars != null)
-        {
-            playerStatusBars.SetHealthBar(health, maxHealth);
-        }      
-    }
-
-    private void CheckAndSetHealthBar()
-    {
-        if (healthbar != null)
-        {
-            healthbar.SetHealthBar(health, maxHealth);
-        }
-        else
-        {
-            playerStatusBars.SetHealthBar(health, maxHealth);
-        }
+        healthbar.UpdateHeatlhBar(health, maxHealth);
     }
 }

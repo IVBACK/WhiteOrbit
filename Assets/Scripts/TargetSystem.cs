@@ -9,7 +9,7 @@ public class TargetSystem : MonoBehaviour
     [SerializeField] bool isTargeted = false;
     [SerializeField] bool isLocked = false;
 
-    [SerializeField]
+    [SerializeField] int clickCount;
 
     private void Update()
     {
@@ -21,7 +21,7 @@ public class TargetSystem : MonoBehaviour
     {
         SetTargetedStateTrue();
         FindObjectOfType<Player>().SetPlayerLockStateTrue();
-        GetComponent<Npc>().SetTargetCrossOn();
+        GetComponent<Npc>().SetTargetCrossOn();             
     } 
 
     public void BreakPlayerLock()

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour
 {
-    public float shieldPoints = 100f;
-    public float maxShieldPoints = 100f;
+    public int shieldPoints = 100;
+    public int maxShieldPoints = 100;
     
     float shieldTimer = 10f;
 
@@ -14,12 +14,11 @@ public class Shield : MonoBehaviour
 
     [SerializeField] ShieldBar shieldBar;
 
-    [SerializeField] PlayerStatusBars playerStatusBars;
+    [SerializeField] GameObject shield;
 
     private void Start()
     {
-        CheckAndSetShieldBar();
-        CheckAndSetStatusBar();
+        SetShieldBar();
     }
 
     private void Update()
@@ -33,8 +32,7 @@ public class Shield : MonoBehaviour
         isShieldDamaged = true;
         shieldTimer = 10f;
         shieldPoints -= 20;
-        CheckAndSetShieldBar();
-        CheckAndSetStatusBar();
+        SetShieldBar();
         if (shieldPoints <= 0)
         {
             SetShieldActiveFalse();
@@ -55,9 +53,8 @@ public class Shield : MonoBehaviour
     {
         while (shieldPoints < maxShieldPoints)
         {
-            shieldPoints += 10f;
-            CheckAndSetShieldBar();
-            CheckAndSetStatusBar();
+            shieldPoints += 10;
+            SetShieldBar(); ;
             Debug.Log("Shield Recharging");
             yield return new WaitForSeconds(1);
         }
@@ -75,28 +72,17 @@ public class Shield : MonoBehaviour
         isShieldDamaged = false;
         Debug.Log("Shield Recharge Started");
         StartCoroutine(RechargeShield());       
-        GetComponent<SpriteRenderer>().enabled = true;
+        shield.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     private void SetShieldActiveFalse()
     {
         isShieldActive = false;
-        GetComponent<SpriteRenderer>().enabled = false;
+        shield.GetComponent<SpriteRenderer>().enabled = false;
     }
 
-    private void CheckAndSetStatusBar()
+    public void SetShieldBar()
     {
-        if (playerStatusBars != null)
-        {
-            playerStatusBars.SetShieldBar(shieldPoints, maxShieldPoints);
-        }
-    }
-
-    private void CheckAndSetShieldBar()
-    {
-        if(shieldBar != null)
-        {
-            shieldBar.SetShieldBar(shieldPoints, maxShieldPoints);
-        }
+        shieldBar.UpdateShieldBar(shieldPoints, maxShieldPoints);
     }
 }

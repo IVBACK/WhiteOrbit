@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Level : MonoBehaviour
 {
     [SerializeField] int level = 1;
@@ -11,25 +12,25 @@ public class Level : MonoBehaviour
 
     [SerializeField] Text levelText;
 
-    [SerializeField] PlayerStatusBars playerStatusBars;
+    [SerializeField] ExpBar expBar;
 
     void Start()
     {
-        playerStatusBars.SetExpBar(totalExp, maxExp);
+        expBar.SetExpBar(totalExp, maxExp);
         levelText.text = level.ToString();
     }
 
     public void GetExp(int exp)
     {
         totalExp += exp;
-        playerStatusBars.SetExpBar(totalExp, maxExp);
+        expBar.SetExpBar(totalExp, maxExp);
         if(totalExp >= maxExp)
         {
             level += 1;
             levelText.text = level.ToString();
             totalExp = 0;
             maxExp += 50;
-            playerStatusBars.SetExpBar(totalExp, maxExp);
+            expBar.SetExpBar(totalExp, maxExp);
         }
     }
 }

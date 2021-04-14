@@ -10,9 +10,11 @@ public class ExpBar : MonoBehaviour
     public Color high;
     public Vector3 offset;
 
+    [SerializeField] bool alwaysOn;
+
     public void SetExpBar(float exp, float maxExp)
     {
-        slider.gameObject.SetActive(exp < maxExp);
+        slider.gameObject.SetActive(true);
         slider.value = exp;
         slider.maxValue = maxExp;
 
