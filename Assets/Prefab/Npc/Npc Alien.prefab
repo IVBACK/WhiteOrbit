@@ -776,7 +776,6 @@ MonoBehaviour:
   patrol: 1
   aggro: 0
   trackPlayer: 0
-  targetCross: {fileID: 274215479}
   laser: {fileID: 931692346010555205, guid: 88db7056d0e6b2b4286c349ac6d09383, type: 3}
   gun: {fileID: 3384734054292405882}
 --- !u!114 &827875709
@@ -794,6 +793,7 @@ MonoBehaviour:
   isTargeted: 0
   isLocked: 0
   clickCount: 0
+  targetCross: {fileID: 274215479}
 --- !u!1 &3384734054292405882
 GameObject:
   m_ObjectHideFlags: 0

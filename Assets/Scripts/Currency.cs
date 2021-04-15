@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Currency : MonoBehaviour
 {
-    int playerTotalCurrency;
+    [SerializeField] int playerTotalCurrency;
 
     [SerializeField] Text currencyText;
 

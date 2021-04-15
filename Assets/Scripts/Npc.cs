@@ -18,8 +18,6 @@ public class Npc : MonoBehaviour
     [SerializeField] bool aggro = false;
     [SerializeField] bool trackPlayer = false;
 
-    //[SerializeField] GameObject targetCross;
-
     [SerializeField] GameObject laser;
     [SerializeField] GameObject gun;
 
@@ -27,7 +25,6 @@ public class Npc : MonoBehaviour
 
     private void Awake()
     {
-        //SetTargetCrossOff();
         randomPos = new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f));       
     }
 
@@ -84,24 +81,12 @@ public class Npc : MonoBehaviour
             trackPlayer = false;
         }
     }
-
-    /*public void SetTargetCrossOn()
-    {
-        targetCross.GetComponent<SpriteRenderer>().enabled = true;
-    }
-
-    public void SetTargetCrossOff()
-    {
-        targetCross.GetComponent<SpriteRenderer>().enabled = false;
-    }*/
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Player>())
         {
             aggro = true;
             patrol = false;
-            //collision.GetComponent<TargetSystem>().SetTargetedStateTrue(); //Causing bug couldnt fix yet
             GetComponent<TargetSystem>().SetLockStateTrue();
             StartCoroutine(ShootLaser());
         }

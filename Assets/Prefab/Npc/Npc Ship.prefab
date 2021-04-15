@@ -739,7 +739,6 @@ MonoBehaviour:
   patrol: 1
   aggro: 0
   trackPlayer: 0
-  targetCross: {fileID: 572816484}
   laser: {fileID: 8956582450753928806, guid: b818b3e94de386047aece5062d6787a7, type: 3}
   gun: {fileID: 5618569798544655461}
 --- !u!114 &1071314103
@@ -757,6 +756,7 @@ MonoBehaviour:
   isTargeted: 0
   isLocked: 0
   clickCount: 0
+  targetCross: {fileID: 572816484}
 --- !u!114 &64355961
 MonoBehaviour:
   m_ObjectHideFlags: 0

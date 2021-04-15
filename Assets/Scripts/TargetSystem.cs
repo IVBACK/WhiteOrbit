@@ -6,10 +6,8 @@ public class TargetSystem : MonoBehaviour
 {
     Vector3 targetPos;
 
-    [SerializeField] bool isTargeted = false;
-    [SerializeField] bool isLocked = false;
-
-    [SerializeField] int clickCount;
+    private bool isTargeted = false;
+    private bool isLocked = false;
 
     [SerializeField] GameObject targetCross;
 
