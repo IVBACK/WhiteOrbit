@@ -83,9 +83,12 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             if(cooldownBars.rocketTimer != false) { return; }
-            cooldownBars.StartRocketTimer();
-            GameObject rocketP = Instantiate(rocket, gun.transform.position, Quaternion.identity) as GameObject;
-            rocketP.transform.rotation = rotation;
+            if(GetComponent<PlayerInventory>().UseRocket())
+            {
+                cooldownBars.StartRocketTimer();
+                GameObject rocketP = Instantiate(rocket, gun.transform.position, Quaternion.identity) as GameObject;
+                rocketP.transform.rotation = rotation;
+            }           
         }
     }
 

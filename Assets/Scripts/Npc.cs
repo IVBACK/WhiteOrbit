@@ -127,6 +127,7 @@ public class Npc : MonoBehaviour
         {
             player.GetComponent<Player>().SetPlayerLockStateFalse();
             player.GetComponent<Level>().GetExp(exp);
+            player.GetComponent<Currency>().AddCurrency(Random.Range(1, 10));
         }       
     }
 }
