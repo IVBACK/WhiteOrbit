@@ -11,6 +11,13 @@ public class TargetSystem : MonoBehaviour
 
     [SerializeField] int clickCount;
 
+    [SerializeField] GameObject targetCross;
+
+    private void Awake()
+    {
+        SetTargetCrossOff();
+    }
+
     private void Update()
     {
         BreakPlayerLock();
@@ -21,7 +28,7 @@ public class TargetSystem : MonoBehaviour
     {
         SetTargetedStateTrue();
         FindObjectOfType<Player>().SetPlayerLockStateTrue();
-        GetComponent<Npc>().SetTargetCrossOn();             
+        SetTargetCrossOn();
     } 
 
     public void BreakPlayerLock()
@@ -30,10 +37,7 @@ public class TargetSystem : MonoBehaviour
         {
             SetTargetedStateFalse();
             FindObjectOfType<Player>().SetPlayerLockStateFalse();
-            if(GetComponent<Npc>() != null)
-            {
-                GetComponent<Npc>().SetTargetCrossOff();
-            }           
+            SetTargetCrossOff();          
         }
     }
 
@@ -91,5 +95,15 @@ public class TargetSystem : MonoBehaviour
     public bool ReturnTargetedState()
     {
         return isTargeted;
+    }
+
+    public void SetTargetCrossOn()
+    {
+        targetCross.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    public void SetTargetCrossOff()
+    {
+        targetCross.GetComponent<SpriteRenderer>().enabled = false;
     }
 }
