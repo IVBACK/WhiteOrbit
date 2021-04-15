@@ -31,7 +31,7 @@ public class Station : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<Npc>())
+        if (collision.GetComponent<Npc>() && collision.GetComponent<TargetSystem>().ReturnTargetedState())
         {
             aggro = false;
             collision.GetComponent<TargetSystem>().SetTargetedStateFalse();

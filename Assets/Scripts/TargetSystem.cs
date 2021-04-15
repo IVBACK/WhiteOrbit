@@ -6,6 +6,8 @@ public class TargetSystem : MonoBehaviour
 {
     Vector3 targetPos;
 
+    TargetSystem target;
+
     private bool isTargeted = false;
     private bool isLocked = false;
 
@@ -27,7 +29,7 @@ public class TargetSystem : MonoBehaviour
         SetTargetedStateTrue();
         FindObjectOfType<Player>().SetPlayerLockStateTrue();
         SetTargetCrossOn();
-    } 
+    }      
 
     public void BreakPlayerLock()
     {
@@ -48,8 +50,8 @@ public class TargetSystem : MonoBehaviour
             {
                 if (targetsystem.ReturnTargetedState())
                 {
+                    target = targetsystem;
                     targetPos = targetsystem.transform.position;
-                    CheckTargetDistance();
                 }
             }
 
@@ -58,11 +60,6 @@ public class TargetSystem : MonoBehaviour
             var toTargetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = toTargetRotation;
         }
-    }
-
-    private void CheckTargetDistance()
-    {
-        var relativePos = targetPos - transform.position;
     }
 
     public void SetTargetedStateFalse()

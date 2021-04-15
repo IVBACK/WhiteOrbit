@@ -12,17 +12,17 @@ TagManager:
   - 
   - Water
   - UI
-  - Laser
-  - Enemy
+  - PlayerLaser
+  - 
   - Player
-  - EnemyLaser
+  - 
   - Rocket
   - Station
   - Station Rocket
-  - 
-  - 
-  - 
-  - 
+  - NpcShipLaser
+  - NpcAlienLaser
+  - NpcShip
+  - NpcAlien
   - 
   - 
   - 

@@ -505,7 +505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1176832417345666909}
   - component: {fileID: 1176832417345666906}
-  m_Layer: 7
+  m_Layer: 16
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -770,6 +770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b6dee69fe210a40b3b1a16fd7de8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {x: 0, y: 0, z: 0}
+  targetLastPos: {x: 0, y: 0, z: 0}
+  targetGameObject: {fileID: 0}
   exp: 20
   speed: 1
   shootDelay: 1.5
@@ -790,9 +793,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee1c50680727684dab1261b9742b855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTargeted: 0
-  isLocked: 0
-  clickCount: 0
   targetCross: {fileID: 274215479}
 --- !u!1 &3384734054292405882
 GameObject:

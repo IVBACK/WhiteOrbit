@@ -733,6 +733,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efdfafd16131984e8124d17ff48ddcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {x: 0, y: 0, z: 0}
+  targetLastPos: {x: 0, y: 0, z: 0}
+  targetGameObject: {fileID: 0}
   exp: 50
   speed: 3
   shootDelay: 1
@@ -753,9 +756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee1c50680727684dab1261b9742b855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTargeted: 0
-  isLocked: 0
-  clickCount: 0
   targetCross: {fileID: 572816484}
 --- !u!114 &64355961
 MonoBehaviour:
@@ -1127,7 +1127,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8310588406614148418}
   - component: {fileID: 8310588406614148421}
-  m_Layer: 7
+  m_Layer: 15
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
