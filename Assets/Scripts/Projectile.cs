@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
         GameObject target = otherCollider.gameObject;
         Shield targetShield = target.GetComponentInChildren<Shield>();
         Health targetHealth = target.GetComponent<Health>();
-        if ( targetShield != null && targetShield.IsShieldActive())
+        if (targetShield != null && targetShield.IsShieldActive())
         {
             targetShield.DamageShield(damage);
             Destroy(gameObject);

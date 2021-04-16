@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class KeepBetweenScenes : MonoBehaviour
-{
-   
+{  
     private void Awake()
     {
         int count = FindObjectsOfType<KeepBetweenScenes>().Length;

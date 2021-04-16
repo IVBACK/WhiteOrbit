@@ -34,13 +34,15 @@ public class NpcAlien : Npc
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.GetComponent<NpcAlien>()) { return; }
-        if(collision.GetComponent<TargetSystem>())
+        if (collision.GetComponent<NpcAlien>() || targetSystem.ReturnLockedState()) { return; }
+        if (collision.GetComponent<TargetSystem>())
         {
+            trackTarget = false;
             aggro = true;
             patrol = false;
-            GetComponent<TargetSystem>().SetLockStateTrue();
-            targetGameObject = collision.gameObject;
+            targetSystem.SetLockStateTrue();
+            targetSystem.targetObject = collision.gameObject;
+            StartPickPosOffset();
             StartShoot();
         }
     }
@@ -48,14 +50,25 @@ public class NpcAlien : Npc
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<NpcAlien>()) { return; }
-        if (collision.GetComponent<TargetSystem>())
+        
+        if (collision.gameObject == targetSystem.targetObject) //When target is dead
         {
             aggro = false;
-            collision.GetComponent<TargetSystem>().SetTargetedStateFalse();
-            GetComponent<TargetSystem>().SetLockStateFalse();
             targetLastPos = collision.transform.position;
             movement = targetLastPos;
-            trackPlayer = true;
+            trackTarget = true;
+            targetSystem.SetLockStateFalse();
+        }        
+
+        else if (collision.GetComponent<TargetSystem>())
+        {
+            if (targetSystem.ReturnLockedState()) { return; }
+            aggro = false;
+            collision.GetComponent<TargetSystem>().SetTargetedStateFalse();
+            targetSystem.SetLockStateFalse();
+            targetLastPos = collision.transform.position;
+            movement = targetLastPos;
+            trackTarget = true;
         }
     }
 }

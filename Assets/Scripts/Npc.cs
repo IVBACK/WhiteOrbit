@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Npc : MonoBehaviour
 {
-
-    public Vector3 movement;
     Vector3 target;
-    public Vector3 targetLastPos;
     Vector3 randomPos;
-
-    public GameObject targetGameObject;
+    Vector3 posOffset;
+    
+    public Vector3 movement;
+    public Vector3 targetLastPos;   
 
     [SerializeField] int exp;
     [SerializeField] float speed = 1f;    
@@ -18,16 +17,20 @@ public class Npc : MonoBehaviour
 
     public bool patrol = true;
     public bool aggro = false;
-    public bool trackPlayer = false;
+    public bool trackTarget = false;
 
     [SerializeField] GameObject laser;
     [SerializeField] GameObject gun;
+
+    public TargetSystem targetSystem;
 
     Quaternion toTargetRotation;
 
     private void Awake()
     {
-        randomPos = new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f));       
+        randomPos = new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f));
+        posOffset = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), 0);
+        targetSystem = GetComponent<TargetSystem>();
     }
 
     public virtual void RandomMovement()
@@ -45,13 +48,23 @@ public class Npc : MonoBehaviour
     {
         if (aggro != true) { return; }
         {
-            target = targetGameObject.transform.position;
-            transform.position = Vector3.MoveTowards(transform.position, target + new Vector3(3, 3, 0), speed * Time.deltaTime);
+            target = targetSystem.targetObject.transform.position;
+            transform.position = Vector3.MoveTowards(transform.position, target + posOffset, speed * Time.deltaTime);
             movement = target;
         }
     }
 
-    public IEnumerator ShootLaser()
+    private IEnumerator PickPosOffset()
+    {
+        while(aggro)
+        {
+            posOffset = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), 0);
+            Debug.Log("Cycle");
+            yield return new WaitForSecondsRealtime(2);
+        }      
+    }
+
+    private IEnumerator ShootLaser()
     {
         while (aggro)
         {
@@ -71,32 +84,38 @@ public class Npc : MonoBehaviour
 
     public virtual void TrackTarget()
     {
-        if (trackPlayer != true) { return; }
+        if (trackTarget != true) { return; }
         
         if(transform.position != targetLastPos)
         {
+            movement = targetLastPos;
             transform.position = Vector3.MoveTowards(transform.position, targetLastPos, speed * Time.deltaTime);
         }
         else
         {
             patrol = true;
-            trackPlayer = false;
+            trackTarget = false;
         }
     }
 
     public void StartShoot()
     {
         StartCoroutine(ShootLaser());
-    }  
+    }
+
+    public void StartPickPosOffset()
+    {
+        StartCoroutine(PickPosOffset());
+    }
 
     private void OnDestroy()
     {
         Player player = FindObjectOfType<Player>();
-        if(player != null)
+        if (targetSystem.isTargetedByPlayer)
         {
             player.GetComponent<Player>().SetPlayerLockStateFalse();
             player.GetComponent<Level>().GetExp(exp);
             player.GetComponent<Currency>().AddCurrency(Random.Range(3, 10));
-        }       
+        }      
     }
 }

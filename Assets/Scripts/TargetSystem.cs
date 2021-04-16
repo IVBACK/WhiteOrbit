@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class TargetSystem : MonoBehaviour
 {
-    Vector3 targetPos;
-
-    TargetSystem target;
 
     private bool isTargeted = false;
     private bool isLocked = false;
+    public bool isTargetedByPlayer;
 
     [SerializeField] GameObject targetCross;
+
+    public GameObject targetObject;
 
     private void Awake()
     {
@@ -26,36 +26,29 @@ public class TargetSystem : MonoBehaviour
 
     private void OnMouseDown()
     {
-        SetTargetedStateTrue();
-        FindObjectOfType<Player>().SetPlayerLockStateTrue();
+        isTargeted = true;
+        isTargetedByPlayer = true;
         SetTargetCrossOn();
+        Player player = FindObjectOfType<Player>();
+        player.SetPlayerLockStateTrue();
+        player.GetComponent<TargetSystem>().targetObject = this.gameObject;
     }      
 
     public void BreakPlayerLock()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SetTargetedStateFalse();
+            isTargeted = false;
             FindObjectOfType<Player>().SetPlayerLockStateFalse();
             SetTargetCrossOff();          
         }
     }
 
-    private void LockTarget()
+     private void LockTarget()
     {
         if (isLocked != true) { return; }
-        {
-            TargetSystem[] targetSystems = FindObjectsOfType<TargetSystem>();
-            foreach (TargetSystem targetsystem in targetSystems)
-            {
-                if (targetsystem.ReturnTargetedState())
-                {
-                    target = targetsystem;
-                    targetPos = targetsystem.transform.position;
-                }
-            }
-
-            var relativePos = targetPos - transform.position;
+        {          
+            var relativePos = targetObject.transform.position - transform.position;
             var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
             var toTargetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = toTargetRotation;
@@ -82,16 +75,16 @@ public class TargetSystem : MonoBehaviour
         isLocked = true;
     }
 
-    public Vector3 ReturnCurrentTargetPos()
-    {
-        return targetPos;
-    }
-
     public bool ReturnTargetedState()
     {
         return isTargeted;
     }
 
+    public bool ReturnLockedState()
+    {
+        return isLocked;
+    }
+    
     public void SetTargetCrossOn()
     {
         targetCross.GetComponent<SpriteRenderer>().enabled = true;

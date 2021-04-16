@@ -772,15 +772,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {x: 0, y: 0, z: 0}
   targetLastPos: {x: 0, y: 0, z: 0}
-  targetGameObject: {fileID: 0}
   exp: 20
   speed: 1
   shootDelay: 1.5
   patrol: 1
   aggro: 0
-  trackPlayer: 0
+  trackTarget: 0
   laser: {fileID: 931692346010555205, guid: 88db7056d0e6b2b4286c349ac6d09383, type: 3}
   gun: {fileID: 3384734054292405882}
+  targetSystem: {fileID: 0}
 --- !u!114 &827875709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -793,7 +793,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee1c50680727684dab1261b9742b855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTargetedByPlayer: 0
   targetCross: {fileID: 274215479}
+  targetObject: {fileID: 0}
 --- !u!1 &3384734054292405882
 GameObject:
   m_ObjectHideFlags: 0
