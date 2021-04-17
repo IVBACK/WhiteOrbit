@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D otherCollider)
     {
         GameObject target = otherCollider.gameObject;
-        Shield targetShield = target.GetComponentInChildren<Shield>();
+        Shield targetShield = target.GetComponent<Shield>();
         Health targetHealth = target.GetComponent<Health>();
         if (targetShield != null && targetShield.IsShieldActive())
         {

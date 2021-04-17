@@ -55,10 +55,8 @@ public class Shield : MonoBehaviour
         {
             shieldPoints += 10;
             SetShieldBar(); ;
-            Debug.Log("Shield Recharging");
             yield return new WaitForSeconds(1);
-        }
-        Debug.Log("Shield Recharge Completed");       
+        }     
     }
 
     public bool IsShieldActive()
@@ -70,7 +68,6 @@ public class Shield : MonoBehaviour
     {
         isShieldActive = true;
         isShieldDamaged = false;
-        Debug.Log("Shield Recharge Started");
         StartCoroutine(RechargeShield());       
         shield.GetComponent<SpriteRenderer>().enabled = true;
     }

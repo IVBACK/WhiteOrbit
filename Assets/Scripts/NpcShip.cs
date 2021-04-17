@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NpcShip : Npc
-{  
+{
     void Update()
     {
         Rotate();
@@ -53,12 +53,12 @@ public class NpcShip : Npc
 
         if (collision.gameObject == targetSystem.targetObject) //When target is dead
         {
-            aggro = false;           
+            aggro = false;
             targetLastPos = collision.transform.position;
             movement = targetLastPos;
             trackTarget = true;
             targetSystem.SetLockStateFalse();
-        }       
+        }
 
         else if (collision.GetComponent<TargetSystem>())
         {
@@ -70,5 +70,5 @@ public class NpcShip : Npc
             movement = targetLastPos;
             trackTarget = true;
         }
-    }   
+    }
 }

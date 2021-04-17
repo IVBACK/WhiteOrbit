@@ -5,8 +5,8 @@ using UnityEngine;
 public class TargetSystem : MonoBehaviour
 {
 
-    private bool isTargeted = false;
-    private bool isLocked = false;
+    public bool isTargeted = false;
+    [SerializeField] bool isLocked = false;
     public bool isTargetedByPlayer;
 
     [SerializeField] GameObject targetCross;
@@ -47,11 +47,15 @@ public class TargetSystem : MonoBehaviour
      private void LockTarget()
     {
         if (isLocked != true) { return; }
-        {          
-            var relativePos = targetObject.transform.position - transform.position;
-            var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
-            var toTargetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = toTargetRotation;
+        {
+            if(targetObject != null)
+            {
+                var relativePos = targetObject.transform.position - transform.position;
+                var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
+                var toTargetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                transform.rotation = toTargetRotation;
+            }
+            
         }
     }
 

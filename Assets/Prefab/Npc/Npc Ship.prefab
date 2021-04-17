@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 3438655436077803381}
   - component: {fileID: 2072252220357277525}
   - component: {fileID: 3228112126748417411}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: 'Canvas Shield '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4162321126150107703}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 8656445267647905207}
   - component: {fileID: 5429340118060170897}
   - component: {fileID: 4282687079558088170}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5321544152397428914}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 5322023689330055078}
   - component: {fileID: 6371613715648331851}
   - component: {fileID: 1401852714874831410}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: 'Canvas Health '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 388596984517481356}
   - component: {fileID: 7063377185931803700}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3190197616880506364}
   - component: {fileID: 3216224374920097907}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -905,7 +905,7 @@ GameObject:
   - component: {fileID: 5691670478921613985}
   - component: {fileID: 285061182979813397}
   - component: {fileID: 2240421105677986857}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -980,7 +980,7 @@ GameObject:
   - component: {fileID: 2990906149736107014}
   - component: {fileID: 1340008868603222943}
   - component: {fileID: 5186863949337848002}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1055,7 +1055,7 @@ GameObject:
   - component: {fileID: 187564598129497291}
   - component: {fileID: 516664526043692390}
   - component: {fileID: 8557691370449965098}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}

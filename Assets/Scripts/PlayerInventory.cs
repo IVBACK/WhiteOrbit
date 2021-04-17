@@ -8,7 +8,12 @@ public class PlayerInventory : MonoBehaviour
 {
     public int rocketCount;
     [SerializeField] Text rocketCountText;
-    
+
+    private void Start()
+    {
+        rocketCountText.text = rocketCount.ToString();
+    }
+
     public void AddRocket()
     {
         rocketCount++;

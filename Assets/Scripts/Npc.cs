@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Npc : MonoBehaviour
-{
+{ 
     Vector3 target;
     Vector3 randomPos;
     Vector3 posOffset;
@@ -28,7 +28,7 @@ public class Npc : MonoBehaviour
 
     private void Awake()
     {
-        randomPos = new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f));
+        randomPos = new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f), 10);
         posOffset = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), 0);
         targetSystem = GetComponent<TargetSystem>();
     }
@@ -40,7 +40,7 @@ public class Npc : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, randomPos, Time.deltaTime * 1);
         if (transform.position == randomPos)
         {
-            randomPos = new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f));
+            randomPos = new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f), 10);
         }     
     }
 
@@ -48,9 +48,12 @@ public class Npc : MonoBehaviour
     {
         if (aggro != true) { return; }
         {
-            target = targetSystem.targetObject.transform.position;
-            transform.position = Vector3.MoveTowards(transform.position, target + posOffset, speed * Time.deltaTime);
-            movement = target;
+            if(targetSystem.targetObject != null)
+            {
+                target = targetSystem.targetObject.transform.position;
+                transform.position = Vector3.MoveTowards(transform.position, target + posOffset, speed * Time.deltaTime);
+                movement = target;
+            }
         }
     }
 
@@ -58,8 +61,7 @@ public class Npc : MonoBehaviour
     {
         while(aggro)
         {
-            posOffset = new Vector3(Random.Range(-10, 10), Random.Range(-10, 10), 0);
-            Debug.Log("Cycle");
+            posOffset = new Vector3(Random.Range(-15, 15), Random.Range(-15, 15), 0);
             yield return new WaitForSecondsRealtime(2);
         }      
     }
@@ -67,10 +69,10 @@ public class Npc : MonoBehaviour
     private IEnumerator ShootLaser()
     {
         while (aggro)
-        {
+        {           
+            yield return new WaitForSeconds(shootDelay);
             GameObject laserP = Instantiate(laser, gun.transform.position, Quaternion.identity) as GameObject;
             laserP.transform.rotation = toTargetRotation;
-            yield return new WaitForSeconds(shootDelay);           
         }
     }
 

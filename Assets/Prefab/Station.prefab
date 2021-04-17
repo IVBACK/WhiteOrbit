@@ -1122,7 +1122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1000
   maxHealth: 1000
-  explosion: {fileID: 6280710690100643192, guid: 49e32eb1aa130164a90d1c0ed36b61a2, type: 3}
+  explosion: {fileID: 6327314271769990099, guid: fc1a265485ef2cf48bb8d769bb463fd8, type: 3}
   healthbar: {fileID: 5134939095650295812}
 --- !u!114 &5134939095649734516
 MonoBehaviour:
@@ -1152,7 +1152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee1c50680727684dab1261b9742b855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTargetedByPlayer: 0
   targetCross: {fileID: 5134939094766147641}
+  targetObject: {fileID: 0}
 --- !u!50 &5134939095649734519
 Rigidbody2D:
   serializedVersion: 4
@@ -1186,7 +1188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef09ad5f710d5e45b6658c23a74cc15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootDelay: 5
+  shootDelay: 2
   rocketP: {fileID: 623140222917252278, guid: 2b463c36a14798548a7811e76adc44dd, type: 3}
   gun: {fileID: 5134939095754254075}
 --- !u!58 &5134939095649734473
