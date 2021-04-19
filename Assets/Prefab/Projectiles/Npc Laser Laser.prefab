@@ -145,5 +145,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileSpeed: 10
-  projectileLifeTime: 1
+  projectileLifeTime: 2
   damage: 15

@@ -7,13 +7,13 @@ public class Shop : MonoBehaviour
 {
     [SerializeField] Button rocketBuyButton;
     [SerializeField] int rocketCost;
+    
     [SerializeField] Text rocketCostText;
-
     [SerializeField] Text playerCurrencyText;
 
-    Currency currency;
+    private Currency currency;
 
-    PlayerInventory playerInventory;
+    private PlayerInventory playerInventory;
 
     private void Awake()
     {

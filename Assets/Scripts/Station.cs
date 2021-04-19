@@ -5,8 +5,7 @@ using UnityEngine;
 public class Station : MonoBehaviour
 {
     private bool aggro = false;
-
-    public bool cycle;
+    private bool targetCycle;
 
     [SerializeField] int exp;
     [SerializeField] float shootDelay;
@@ -14,9 +13,7 @@ public class Station : MonoBehaviour
     [SerializeField] GameObject rocketP;
     [SerializeField] GameObject gun;
 
-    TargetSystem targetSystem;
-
-    public List<GameObject> targets = new List<GameObject>();
+    private TargetSystem targetSystem;
 
     private void Start()
     {
@@ -40,44 +37,42 @@ public class Station : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Npc>())
+        if (collision.GetComponent<NpcAlien>())
         {
-            targets.Add(collision.gameObject);
-            cycle = true;
+            targetSystem.targets.Add(collision.gameObject);
+            targetCycle = true;
             aggro = true;
             StartCoroutine(ShootRocket());
-
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        targets.Remove(collision.gameObject);
-        if (collision.GetComponent<Npc>() && collision.GetComponent<TargetSystem>().ReturnTargetedState())
+        targetSystem.targets.Remove(collision.gameObject);
+        if (collision.GetComponent<NpcAlien>())
         {
-            cycle = true;
+            targetCycle = true;
         }
     }
 
     private void HandleTargeting()
     {
         int i = 0;
-        if (cycle != true) { return; }
-        if(targets.Count <= 1)
+        if (targetCycle != true) { return; }
+        if(targetSystem.targets.Count <= 0)
         {
-            Debug.Log("No Target");           
+            Debug.Log("No Target");
+            targetSystem.SetTargetCrossOff();
             aggro = false;
             StopCoroutine(ShootRocket());
-            cycle = false;
-
+            targetCycle = false;
         }
         else
         {
-            GameObject target = targets[i + 1];
+            GameObject target = targetSystem.targets[i];
             targetSystem.targetObject = target;
             target.GetComponent<TargetSystem>().SetTargetCrossOn();
-            target.GetComponent<TargetSystem>().SetTargetedStateTrue();
-            cycle = false;
+            targetCycle = false;
         }
     }
 
@@ -89,6 +84,6 @@ public class Station : MonoBehaviour
             player.GetComponent<Player>().SetPlayerLockStateFalse();
             player.GetComponent<Level>().GetExp(exp);
             player.GetComponent<Currency>().AddCurrency(Random.Range(3, 10));
-        }
+        }      
     }
 }

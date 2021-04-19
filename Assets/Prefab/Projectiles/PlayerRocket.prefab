@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3430313384583932608}
   - component: {fileID: 3430313384583932615}
-  - component: {fileID: 3430313384583932614}
   - component: {fileID: 3430313384583932613}
+  - component: {fileID: -4577375375366518866}
   m_Layer: 10
-  m_Name: Rocket
+  m_Name: PlayerRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 1229b3bdff2201f4e836ca8a6b7e78ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -84,22 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3430313384583932614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3430313384583932612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfbfaacb1199ab34db1bcb8454ca46a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileSpeed: 10
-  projectileLifeTime: 5
-  damage: 50
-  explosion: {fileID: 5364998914854501000, guid: 9c4f031a40e7a574fa009f0f31937c69, type: 3}
 --- !u!61 &3430313384583932613
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,3 +110,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.695034, y: 0.19920254}
   m_EdgeRadius: 0
+--- !u!114 &-4577375375366518866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3430313384583932612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f7f834b7dd9594f9fc282f85d9e4e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpeed: 10
+  projectileLifeTime: 5
+  damage: 25
+  explosion: {fileID: 5364998914854501000, guid: 9c4f031a40e7a574fa009f0f31937c69, type: 3}

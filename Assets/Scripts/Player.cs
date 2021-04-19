@@ -14,14 +14,17 @@ public class Player : MonoBehaviour
 
     [SerializeField] CooldownBars cooldownBars;
 
-    Vector3 mousePos;
+    private Vector3 mousePos;
 
-    Quaternion rotation;
+    private Quaternion rotation;
 
-    TargetSystem playerTargetSystem;
+    private TargetSystem playerTargetSystem;
 
-    bool isLocked;
-    public bool isClicked = false;
+    [HideInInspector] public bool isClicked = false;
+
+    private bool isLocked;
+    private bool isFiring;   
+    
 
     private void Start()
     {
@@ -61,7 +64,8 @@ public class Player : MonoBehaviour
     private void StartShootingLaser()
     {
         if (isLocked != true) { return; }
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (isFiring != false) { return; }
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(ShootLaser());
         }      
@@ -73,7 +77,8 @@ public class Player : MonoBehaviour
         {
             GameObject laserP = Instantiate(laser, gun.transform.position, Quaternion.identity) as GameObject;
             laserP.transform.rotation = rotation;
-            yield return new WaitForSeconds(shootDelay);           
+            isFiring = true;
+            yield return new WaitForSeconds(shootDelay);
         }       
     }
 
@@ -109,6 +114,7 @@ public class Player : MonoBehaviour
     public void SetPlayerLockStateFalse()
     {
         isLocked = false;
+        isFiring = false;
         playerTargetSystem.SetLockStateFalse();
     }
 }

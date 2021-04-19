@@ -704,7 +704,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 12
 --- !u!114 &1033599635232730573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,6 +733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efdfafd16131984e8124d17ff48ddcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cycle: 0
   movement: {x: 0, y: 0, z: 0}
   targetLastPos: {x: 0, y: 0, z: 0}
   exp: 50
@@ -756,9 +757,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee1c50680727684dab1261b9742b855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTargeted: 0
+  isLocked: 0
   isTargetedByPlayer: 0
   targetCross: {fileID: 572816484}
   targetObject: {fileID: 0}
+  targets: []
 --- !u!114 &64355961
 MonoBehaviour:
   m_ObjectHideFlags: 0

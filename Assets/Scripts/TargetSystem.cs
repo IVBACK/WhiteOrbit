@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class TargetSystem : MonoBehaviour
 {
-
-    public bool isTargeted = false;
-    [SerializeField] bool isLocked = false;
-    public bool isTargetedByPlayer;
-
     [SerializeField] GameObject targetCross;
+    [HideInInspector] public GameObject targetObject;
 
-    public GameObject targetObject;
+    [HideInInspector] public bool isTargetedByPlayer;
+ 
+    private bool isLocked = false;  
+
+    [HideInInspector] public List<GameObject> targets = new List<GameObject>();
 
     private void Awake()
     {
@@ -26,7 +26,6 @@ public class TargetSystem : MonoBehaviour
 
     private void OnMouseDown()
     {
-        isTargeted = true;
         isTargetedByPlayer = true;
         SetTargetCrossOn();
         Player player = FindObjectOfType<Player>();
@@ -38,13 +37,16 @@ public class TargetSystem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isTargeted = false;
-            FindObjectOfType<Player>().SetPlayerLockStateFalse();
-            SetTargetCrossOff();          
+            if(isTargetedByPlayer)
+            {
+                FindObjectOfType<Player>().SetPlayerLockStateFalse();
+                isTargetedByPlayer = false;
+                SetTargetCrossOff();
+            }                   
         }
     }
 
-     private void LockTarget()
+    private void LockTarget()
     {
         if (isLocked != true) { return; }
         {
@@ -54,19 +56,8 @@ public class TargetSystem : MonoBehaviour
                 var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
                 var toTargetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 transform.rotation = toTargetRotation;
-            }
-            
+            }          
         }
-    }
-
-    public void SetTargetedStateFalse()
-    {
-        isTargeted = false;
-    }
-
-    public void SetTargetedStateTrue()
-    {
-        isTargeted = true;
     }
 
     public void SetLockStateFalse()
@@ -77,16 +68,6 @@ public class TargetSystem : MonoBehaviour
     public void SetLockStateTrue()
     {
         isLocked = true;
-    }
-
-    public bool ReturnTargetedState()
-    {
-        return isTargeted;
-    }
-
-    public bool ReturnLockedState()
-    {
-        return isLocked;
     }
     
     public void SetTargetCrossOn()

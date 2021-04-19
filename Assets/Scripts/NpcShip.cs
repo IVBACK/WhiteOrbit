@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class NpcShip : Npc
 {
+    
     void Update()
     {
         Rotate();
         Aggro();
-        TrackTarget();
-        RandomMovement();       
+        //TrackTarget(); Currently disabled.
+        RandomMovement();
+        HandleTargeting();
     }
 
     public override void Aggro()
@@ -32,43 +34,27 @@ public class NpcShip : Npc
         base.RandomMovement();
     }
 
+    public override void HandleTargeting()
+    {
+        base.HandleTargeting();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<NpcShip>() || targetSystem.ReturnLockedState()) { return; }
+        if (collision.GetComponent<NpcShip>() || collision.GetComponent<Player>() || collision.GetComponent<Station>()) { return; }
         if (collision.GetComponent<TargetSystem>())
         {
-            trackTarget = false;
+            targetSystem.targets.Add(collision.gameObject);
             aggro = true;
-            patrol = false;
-            targetSystem.SetLockStateTrue();
-            targetSystem.targetObject = collision.gameObject;
-            StartPickPosOffset();
-            StartShoot();
+            targetCycle = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<NpcShip>()) { return; }
+        if (collision.GetComponent<NpcShip>() || collision.GetComponent<Player>() || collision.GetComponent<Station>()) { return; }
+        targetSystem.targets.Remove(collision.gameObject);
 
-        if (collision.gameObject == targetSystem.targetObject) //When target is dead
-        {
-            aggro = false;
-            targetLastPos = collision.transform.position;
-            movement = targetLastPos;
-            trackTarget = true;
-            targetSystem.SetLockStateFalse();
-        }
-
-        else if (collision.GetComponent<TargetSystem>())
-        {
-            if (targetSystem.ReturnLockedState()) { return; }
-            aggro = false;
-            collision.GetComponent<TargetSystem>().SetTargetedStateFalse();
-            targetSystem.SetLockStateFalse();
-            targetLastPos = collision.transform.position;
-            movement = targetLastPos;
-            trackTarget = true;
-        }
-    }
+        targetCycle = true;
+    }  
 }

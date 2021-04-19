@@ -9,6 +9,8 @@ public class Health : MonoBehaviour
         
     [SerializeField] GameObject explosion;
 
+    [SerializeField] GameObject destroyedState;
+
     [SerializeField] HealthBar healthbar;
 
     private void Start()
@@ -19,6 +21,10 @@ public class Health : MonoBehaviour
     private void HandleDead()
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
+        if(destroyedState != null)
+        {
+            Instantiate(destroyedState, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 

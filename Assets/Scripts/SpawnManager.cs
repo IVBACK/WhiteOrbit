@@ -26,6 +26,6 @@ public class SpawnManager : MonoBehaviour
     {
         GameObject player = GameObject.Find("PlayerShip");
         player.GetComponent<Player>().isClicked = false;
-        player.transform.position = spawn;
+        player.transform.position = spawn;      
     }
 }

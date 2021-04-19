@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rocket : Projectile
+public class StationRocket : Projectile
 {
-    Vector3 targetPos;
-
-    GameObject target;
-
-    bool isTargetPicked = false;
-
     [SerializeField] GameObject explosion;
+    
+    private Vector3 targetPos;
+
+    private GameObject target;
+
+    private bool isTargetPicked = false;
 
     void Update()
     {
@@ -22,16 +22,9 @@ public class Rocket : Projectile
 
     private void LockTarget()
     {
-        if(isTargetPicked != false) { return; }
-        TargetSystem[] targetSystems = FindObjectsOfType<TargetSystem>();
-        foreach (TargetSystem targetSystem in targetSystems)
-        {
-            if (targetSystem.ReturnTargetedState())
-            {
-                target = targetSystem.gameObject;
-                isTargetPicked = true;
-            }           
-        }
+        if (isTargetPicked != false) { return; }
+        target = GetComponentInParent<TargetSystem>().targetObject;
+        isTargetPicked = true;
     }
 
     private void GuideToTarget()

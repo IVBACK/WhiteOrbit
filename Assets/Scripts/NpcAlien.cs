@@ -8,8 +8,9 @@ public class NpcAlien : Npc
     {
         Rotate();
         Aggro();
-        TrackTarget();
-        RandomMovement();       
+        //TrackTarget(); Currently disabled.
+        RandomMovement();
+        HandleTargeting();
     }
 
     public override void Aggro()
@@ -32,43 +33,26 @@ public class NpcAlien : Npc
         base.Rotate();
     }
 
+    public override void HandleTargeting()
+    {
+        base.HandleTargeting();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<NpcAlien>() || targetSystem.ReturnLockedState()) { return; }
+        if (collision.GetComponent<NpcAlien>()) { return; }
         if (collision.GetComponent<TargetSystem>())
         {
-            trackTarget = false;
+            targetSystem.targets.Add(collision.gameObject);
             aggro = true;
-            patrol = false;
-            targetSystem.SetLockStateTrue();
-            targetSystem.targetObject = collision.gameObject;
-            StartPickPosOffset();
-            StartShoot();
+            targetCycle = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<NpcAlien>()) { return; }
-        
-        if (collision.gameObject == targetSystem.targetObject) //When target is dead
-        {
-            aggro = false;
-            targetLastPos = collision.transform.position;
-            movement = targetLastPos;
-            trackTarget = true;
-            targetSystem.SetLockStateFalse();
-        }        
-
-        else if (collision.GetComponent<TargetSystem>())
-        {
-            if (targetSystem.ReturnLockedState()) { return; }
-            aggro = false;
-            collision.GetComponent<TargetSystem>().SetTargetedStateFalse();
-            targetSystem.SetLockStateFalse();
-            targetLastPos = collision.transform.position;
-            movement = targetLastPos;
-            trackTarget = true;
-        }
-    }
+        targetSystem.targets.Remove(collision.gameObject);
+        targetCycle = true;
+    }   
 }

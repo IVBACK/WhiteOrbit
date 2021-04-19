@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: afc19dbe3d4ff214cb116abf6e2f5531, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.3443396, b: 0.3443396, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1120,9 +1120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27328ece192dcce4fb428aaf94f7645e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
-  maxHealth: 1000
+  health: 500
+  maxHealth: 500
   explosion: {fileID: 6327314271769990099, guid: fc1a265485ef2cf48bb8d769bb463fd8, type: 3}
+  destroyedState: {fileID: 4503487390936247172, guid: 7ed6ab8d521a9414a83cffbd1ee80884, type: 3}
   healthbar: {fileID: 5134939095650295812}
 --- !u!114 &5134939095649734516
 MonoBehaviour:
@@ -1136,8 +1137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29db23f6215b74d48a723e178209c91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldPoints: 2000
-  maxShieldPoints: 2000
+  shieldPoints: 500
+  maxShieldPoints: 500
   shieldBar: {fileID: 5134939094533687724}
   shield: {fileID: 3111870682603048393}
 --- !u!114 &5134939095649734518
@@ -1152,9 +1153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee1c50680727684dab1261b9742b855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLocked: 0
   isTargetedByPlayer: 0
   targetCross: {fileID: 5134939094766147641}
   targetObject: {fileID: 0}
+  targets: []
 --- !u!50 &5134939095649734519
 Rigidbody2D:
   serializedVersion: 4
@@ -1188,6 +1191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef09ad5f710d5e45b6658c23a74cc15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetCycle: 0
+  exp: 100
   shootDelay: 2
   rocketP: {fileID: 623140222917252278, guid: 2b463c36a14798548a7811e76adc44dd, type: 3}
   gun: {fileID: 5134939095754254075}
@@ -1206,7 +1211,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 12
 --- !u!212 &5134939095649734474
 SpriteRenderer:
   m_ObjectHideFlags: 0
