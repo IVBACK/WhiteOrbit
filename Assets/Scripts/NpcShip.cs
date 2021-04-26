@@ -41,7 +41,7 @@ public class NpcShip : Npc
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<NpcShip>() || collision.GetComponent<Player>() || collision.GetComponent<Station>()) { return; }
+        if (!collision.GetComponent<NpcAlien>()/*collision.GetComponent<NpcShip>() || collision.GetComponent<Player>() || collision.GetComponent<Station>()*/) { return; }
         if (collision.GetComponent<TargetSystem>())
         {
             targetSystem.targets.Add(collision.gameObject);
@@ -52,7 +52,7 @@ public class NpcShip : Npc
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<NpcShip>() || collision.GetComponent<Player>() || collision.GetComponent<Station>()) { return; }
+        if (!collision.GetComponent<NpcAlien>()/*collision.GetComponent<NpcShip>() || collision.GetComponent<Player>() || collision.GetComponent<Station>()*/) { return; }
         targetSystem.targets.Remove(collision.gameObject);
 
         targetCycle = true;

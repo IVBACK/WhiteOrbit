@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Dock : MonoBehaviour
 {
+    [SerializeField] int healAmount = 100;
+
     [SerializeField] float timer = 3f;
 
     [SerializeField] bool player = false;
@@ -52,8 +54,10 @@ public class Dock : MonoBehaviour
     {
         if (collision.GetComponent<Player>())
         {
+            Health playerHealth = collision.GetComponent<Health>();
             playerShip = collision.gameObject;
-            player = true;           
+            player = true;
+            playerShip.GetComponent<Health>().Heal(healAmount);
         }
     }
 

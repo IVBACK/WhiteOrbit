@@ -25,10 +25,23 @@ public class Health : MonoBehaviour
         {
             Instantiate(destroyedState, transform.position, Quaternion.identity);
         }
-        Destroy(gameObject);
+        if(GetComponent<Player>() == true)
+        {
+            FindObjectOfType<GameManager>().HandlePlayerDeath();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }        
     }
 
-    public virtual void DamageHealth(int damage)
+    public void Heal(int healAmount)
+    {
+        health += healAmount;
+        SetHealthBar();
+    }
+
+    public void DamageHealth(int damage)
     {
         health -= damage;
         SetHealthBar();

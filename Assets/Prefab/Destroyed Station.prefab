@@ -299,6 +299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4503487390936247171}
+  - component: {fileID: 3757440111834861028}
   m_Layer: 0
   m_Name: Destroyed Station
   m_TagString: Untagged
@@ -323,6 +324,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.218}
+--- !u!114 &3757440111834861028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4503487390936247172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24e81a13c3d234b4d8b2d0f6e831b992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stationRespawnCount: 180
+  stationForRespawn: {fileID: 5134939095649734514, guid: 02f2d28b1aa5f424ea9d2af0f7b4cb12, type: 3}
 --- !u!1001 &3411004945579930197
 PrefabInstance:
   m_ObjectHideFlags: 0

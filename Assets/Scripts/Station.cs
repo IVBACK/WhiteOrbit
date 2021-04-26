@@ -61,7 +61,6 @@ public class Station : MonoBehaviour
         if (targetCycle != true) { return; }
         if(targetSystem.targets.Count <= 0)
         {
-            Debug.Log("No Target");
             targetSystem.SetTargetCrossOff();
             aggro = false;
             StopCoroutine(ShootRocket());

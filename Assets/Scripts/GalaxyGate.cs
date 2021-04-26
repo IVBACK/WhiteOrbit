@@ -42,6 +42,7 @@ public class GalaxyGate : MonoBehaviour
         if (collision.GetComponent<Player>())
         {
             player = false;
+            collision.GetComponent<Player>().isClicked = false;
             timer = 3f;           
         }
     }

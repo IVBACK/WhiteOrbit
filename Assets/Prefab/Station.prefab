@@ -916,7 +916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5134939095482332033
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1120,8 +1120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27328ece192dcce4fb428aaf94f7645e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 500
-  maxHealth: 500
+  health: 1000
+  maxHealth: 1000
   explosion: {fileID: 6327314271769990099, guid: fc1a265485ef2cf48bb8d769bb463fd8, type: 3}
   destroyedState: {fileID: 4503487390936247172, guid: 7ed6ab8d521a9414a83cffbd1ee80884, type: 3}
   healthbar: {fileID: 5134939095650295812}
@@ -1137,8 +1137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29db23f6215b74d48a723e178209c91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldPoints: 500
-  maxShieldPoints: 500
+  shieldPoints: 2000
+  maxShieldPoints: 2000
   shieldBar: {fileID: 5134939094533687724}
   shield: {fileID: 3111870682603048393}
 --- !u!114 &5134939095649734518
@@ -1153,10 +1153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee1c50680727684dab1261b9742b855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLocked: 0
-  isTargetedByPlayer: 0
   targetCross: {fileID: 5134939094766147641}
   targetObject: {fileID: 0}
+  isTargetedByPlayer: 0
   targets: []
 --- !u!50 &5134939095649734519
 Rigidbody2D:
@@ -1191,7 +1190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef09ad5f710d5e45b6658c23a74cc15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCycle: 0
   exp: 100
   shootDelay: 2
   rocketP: {fileID: 623140222917252278, guid: 2b463c36a14798548a7811e76adc44dd, type: 3}

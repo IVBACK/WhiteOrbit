@@ -34,6 +34,11 @@ public class Npc : MonoBehaviour
         targetSystem = GetComponent<TargetSystem>();
     }
 
+    private void Start()
+    {
+        randomPos = transform.parent.transform.position + new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f), 10);     
+    }
+
     public virtual void RandomMovement()
     {
         if (patrol != true) { return; }
