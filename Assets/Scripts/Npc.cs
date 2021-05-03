@@ -36,7 +36,7 @@ public class Npc : MonoBehaviour
 
     private void Start()
     {
-        randomPos = transform.parent.transform.position + new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f), 10);     
+        randomPos = transform.parent.transform.position + new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f), 0);     
     }
 
     public virtual void RandomMovement()
@@ -46,7 +46,7 @@ public class Npc : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, randomPos, Time.deltaTime * 1);
         if (transform.position == randomPos)
         {
-            randomPos = transform.parent.transform.position + new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f), 10);
+            randomPos = transform.parent.transform.position + new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f), 0);
         }     
     }
 
@@ -68,7 +68,7 @@ public class Npc : MonoBehaviour
         while(aggro)
         {
             posOffset = new Vector3(Random.Range(-15, 15), Random.Range(-15, 15), 0);
-            yield return new WaitForSecondsRealtime(2);
+            yield return new WaitForSeconds(3);
         }      
     }
 
@@ -120,7 +120,6 @@ public class Npc : MonoBehaviour
             targetSystem.SetLockStateFalse();
             patrol = true;
             targetCycle = false;
-            targetSystem.SetTargetCrossOff();
         }
         else
         {
@@ -130,7 +129,6 @@ public class Npc : MonoBehaviour
             StartShoot();                        
             GameObject target = targetSystem.targets[i];
             targetSystem.targetObject = target;
-            target.GetComponent<TargetSystem>().SetTargetCrossOn();
             targetCycle = false;
         }
     }

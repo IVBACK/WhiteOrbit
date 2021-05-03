@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public void HandlePlayerDeath()
     {
         player.GetComponent<Player>().isClicked = false;
+        player.GetComponent<Player>().StopAllCoroutines();
         player.GetComponent<TargetSystem>().BreakPlayerLock();
         player.transform.position = playerRespawnPos.transform.position;
         player.GetComponent<Health>().Heal(10);

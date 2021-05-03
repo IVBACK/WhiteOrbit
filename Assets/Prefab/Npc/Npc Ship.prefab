@@ -720,6 +720,7 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   explosion: {fileID: 6280710690100643192, guid: 49e32eb1aa130164a90d1c0ed36b61a2, type: 3}
+  destroyedState: {fileID: 0}
   healthbar: {fileID: 1401852714874831410}
 --- !u!114 &1369052893
 MonoBehaviour:
@@ -733,12 +734,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efdfafd16131984e8124d17ff48ddcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cycle: 0
   movement: {x: 0, y: 0, z: 0}
   targetLastPos: {x: 0, y: 0, z: 0}
   exp: 50
   speed: 3
   shootDelay: 1
+  targetCycle: 0
   patrol: 1
   aggro: 0
   trackTarget: 0
@@ -757,11 +758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ee1c50680727684dab1261b9742b855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTargeted: 0
-  isLocked: 0
-  isTargetedByPlayer: 0
   targetCross: {fileID: 572816484}
   targetObject: {fileID: 0}
+  isTargetedByPlayer: 0
   targets: []
 --- !u!114 &64355961
 MonoBehaviour:
@@ -1197,11 +1196,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5381246454578035025, guid: 3bd3347f245c9084ea42673b61713369, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.004
+      value: 0.083
       objectReference: {fileID: 0}
     - target: {fileID: 5381246454578035025, guid: 3bd3347f245c9084ea42673b61713369, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.041
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5381246454578035025, guid: 3bd3347f245c9084ea42673b61713369, type: 3}
       propertyPath: m_LocalPosition.z

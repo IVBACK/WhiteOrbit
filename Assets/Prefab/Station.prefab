@@ -801,8 +801,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a69e755744622f429ea70711e8f11fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healAmount: 100
   timer: 3
-  player: 0
+  isPlayerDocked: 0
   "U\u0131": {fileID: 5134939094586635219}
   "u\u0131State": 0
 --- !u!1 &5134939095216972474
@@ -916,7 +917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5134939095482332033
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1058,8 +1059,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a69e755744622f429ea70711e8f11fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healAmount: 100
   timer: 3
-  player: 0
+  isPlayerDocked: 0
   "U\u0131": {fileID: 5134939094586635219}
   "u\u0131State": 0
 --- !u!1 &5134939095649734514
@@ -1137,8 +1139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29db23f6215b74d48a723e178209c91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldPoints: 2000
-  maxShieldPoints: 2000
+  shieldPoints: 1500
+  maxShieldPoints: 1500
   shieldBar: {fileID: 5134939094533687724}
   shield: {fileID: 3111870682603048393}
 --- !u!114 &5134939095649734518

@@ -20,30 +20,38 @@ public class TargetSystem : MonoBehaviour
 
     private void Update()
     {
-        BreakPlayerLock();
+        BreakPlayerLockOnKey();
         LockTarget();
     }
 
     private void OnMouseDown()
     {
-        isTargetedByPlayer = true;
-        SetTargetCrossOn();
-        Player player = FindObjectOfType<Player>();
-        player.SetPlayerLockStateTrue();
-        player.GetComponent<TargetSystem>().targetObject = this.gameObject;
+        if (GetComponent<NpcAlien>())
+        {
+            isTargetedByPlayer = true;
+            SetTargetCrossOn();
+            Player player = FindObjectOfType<Player>();
+            player.SetPlayerLockStateTrue();
+            player.GetComponent<TargetSystem>().targetObject = this.gameObject;
+        }        
     }      
 
-    public void BreakPlayerLock()
+    private void BreakPlayerLockOnKey()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(isTargetedByPlayer)
             {
-                FindObjectOfType<Player>().SetPlayerLockStateFalse();
-                isTargetedByPlayer = false;
-                SetTargetCrossOff();
+                BreakPlayerLock();
             }                   
         }
+    }
+
+    public void BreakPlayerLock()
+    {
+        FindObjectOfType<Player>().SetPlayerLockStateFalse();
+        isTargetedByPlayer = false;
+        SetTargetCrossOff();
     }
 
     private void LockTarget()

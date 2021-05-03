@@ -8,7 +8,7 @@ public class Dock : MonoBehaviour
 
     [SerializeField] float timer = 3f;
 
-    [SerializeField] bool player = false;
+    [SerializeField] bool isPlayerDocked = false;
 
     [SerializeField] GameObject Uý;
     
@@ -23,7 +23,7 @@ public class Dock : MonoBehaviour
 
     private void Timer()
     {
-        if (player != true) { return; }
+        if (isPlayerDocked != true) { return; }
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
@@ -38,13 +38,13 @@ public class Dock : MonoBehaviour
         {
             Uý.SetActive(false);
             uýState = false;
-            player = false;
+            isPlayerDocked = false;
         }
         else
         {
             Uý.SetActive(true);
             uýState = true;
-            player = false;
+            isPlayerDocked = false;
             FindObjectOfType<Shop>().DisplayPlayerCurrency();
             Time.timeScale = 0;
         }
@@ -56,7 +56,7 @@ public class Dock : MonoBehaviour
         {
             Health playerHealth = collision.GetComponent<Health>();
             playerShip = collision.gameObject;
-            player = true;
+            isPlayerDocked = true;
             playerShip.GetComponent<Health>().Heal(healAmount);
         }
     }
@@ -65,7 +65,7 @@ public class Dock : MonoBehaviour
     {
         if (collision.GetComponent<Player>())
         {
-            player = false;
+            isPlayerDocked = false;
             timer = 3f;
         }
     }

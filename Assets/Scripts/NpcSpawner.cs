@@ -38,7 +38,7 @@ public class NpcSpawner : MonoBehaviour
         while(npcCount < maxNpcCount)
         {
             npcCount++;
-            GameObject alien = Instantiate(npcForSpawn, transform.position + new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f), 10), Quaternion.identity);
+            GameObject alien = Instantiate(npcForSpawn, transform.position + new Vector3(Random.Range(-60f, 60f), Random.Range(-40f, 40f), 0), Quaternion.identity);
             alien.transform.parent = gameObject.transform;
             yield return new WaitForSeconds(2);
         }

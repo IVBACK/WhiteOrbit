@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NpcShip : Npc
 {
-    
+
     void Update()
     {
         Rotate();
@@ -41,20 +41,19 @@ public class NpcShip : Npc
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.GetComponent<NpcAlien>()/*collision.GetComponent<NpcShip>() || collision.GetComponent<Player>() || collision.GetComponent<Station>()*/) { return; }
+        if (!collision.GetComponent<NpcAlien>()) { return; }
         if (collision.GetComponent<TargetSystem>())
         {
             targetSystem.targets.Add(collision.gameObject);
             aggro = true;
             targetCycle = true;
-        }
+        }       
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.GetComponent<NpcAlien>()/*collision.GetComponent<NpcShip>() || collision.GetComponent<Player>() || collision.GetComponent<Station>()*/) { return; }
+        if (!collision.GetComponent<NpcAlien>()) { return; }
         targetSystem.targets.Remove(collision.gameObject);
-
         targetCycle = true;
     }  
 }

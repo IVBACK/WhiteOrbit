@@ -61,7 +61,6 @@ public class Station : MonoBehaviour
         if (targetCycle != true) { return; }
         if(targetSystem.targets.Count <= 0)
         {
-            targetSystem.SetTargetCrossOff();
             aggro = false;
             StopCoroutine(ShootRocket());
             targetCycle = false;
@@ -70,7 +69,6 @@ public class Station : MonoBehaviour
         {
             GameObject target = targetSystem.targets[i];
             targetSystem.targetObject = target;
-            target.GetComponent<TargetSystem>().SetTargetCrossOn();
             targetCycle = false;
         }
     }
